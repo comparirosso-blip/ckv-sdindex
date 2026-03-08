@@ -1,0 +1,174 @@
+{
+  "protocol_name": "Sabrina Spatial Field Protocol",
+  "protocol_version": "SSFP_v1.0",
+  "author": "Sabrina Lin",
+  "purpose": "Standardized human sensory field observation protocol for spatial datasets compatible with AI analysis and Graph-RAG systems.",
+
+  "dataset_layers": [
+    {
+      "layer": "Layer_1_raw_observation",
+      "description": "Human narrative observation captured in the field."
+    },
+    {
+      "layer": "Layer_2_vs_vector",
+      "description": "Quantified sensory vector describing material, light, relation, geometry and emotion."
+    },
+    {
+      "layer": "Layer_3_ai_analysis",
+      "description": "AI-generated diagnosis, counterpoint analysis and research interpretation."
+    }
+  ],
+
+  "observation_schema": {
+    "record_id": "",
+    "observer": "Sabrina Lin",
+    "protocol_version": "SSFP_v1.0",
+
+    "site": {
+      "name": "",
+      "city": "",
+      "country": "",
+      "site_type": ""
+    },
+
+    "observation_context": {
+      "date": "",
+      "time_of_day": "",
+      "weather": "",
+      "crowd_density": "",
+      "visit_duration": ""
+    },
+
+    "raw_field_note": {
+      "arrival_impression": "",
+      "spatial_structure": "",
+      "light_condition": "",
+      "acoustic_condition": "",
+      "material_atmosphere": "",
+      "program_mix": "",
+      "body_response": "",
+      "key_observation": "",
+      "reflection": ""
+    },
+
+    "vs_vector": {
+      "Vt": null,
+      "Vl": null,
+      "Vr": null,
+      "Vg": null,
+      "Ve": null
+    },
+
+    "vs_subtypes": {
+      "Vt_subtype": "",
+      "Vl_source": "",
+      "Vr_pattern": "",
+      "Vg_subtype": "",
+      "Ve_trigger": ""
+    },
+
+    "media": {
+      "photos": [],
+      "audio": [],
+      "notes": ""
+    },
+
+    "metadata": {
+      "dataset": "Sabrina_Spatial_Observation",
+      "status": "raw",
+      "review_state": "unreviewed"
+    }
+  },
+
+  "field_observation_workflow": {
+    "step_1_capture_media": {
+      "description": "Capture basic spatial media.",
+      "recommended_photos": [
+        "wide spatial overview",
+        "lighting and material detail",
+        "human circulation pattern"
+      ],
+      "recommended_photo_count": "3-8"
+    },
+
+    "step_2_raw_notes": {
+      "description": "Write quick raw notes (2-3 minutes).",
+      "required_fields": [
+        "arrival_impression",
+        "light_condition",
+        "acoustic_condition",
+        "body_response",
+        "key_observation"
+      ]
+    },
+
+    "step_3_vs_vector_scoring": {
+      "description": "Score sensory dimensions quickly.",
+      "dimensions": {
+        "Vt": "Material / tactile atmosphere",
+        "Vl": "Light quality",
+        "Vr": "Human relation and rhythm",
+        "Vg": "Spatial geometry",
+        "Ve": "Emotional / temporal response"
+      },
+      "scale": "1-5"
+    }
+  },
+
+  "ai_processing_pipeline": {
+    "input": "raw observation json",
+    "ai_tasks": [
+      "generate spatial diagnosis",
+      "generate counterpoint analysis",
+      "generate research findings"
+    ],
+    "output_layers": [
+      "ai_diagnosis",
+      "counterpoint_search",
+      "research_interpretation"
+    ]
+  },
+
+  "dataset_growth_strategy": {
+    "target_records": 150,
+    "recommended_frequency": "3 observations per week",
+    "estimated_completion_time": "50 weeks",
+
+    "dataset_value": [
+      "human sensory training dataset",
+      "cross-cultural spatial comparison",
+      "AI-compatible sensory knowledge graph"
+    ]
+  },
+
+  "repository_structure": {
+    "recommended_structure": {
+      "dataset": {
+        "raw": [
+          "001.json",
+          "002.json",
+          "003.json"
+        ],
+        "diagnosis": [
+          "001_ai.json",
+          "002_ai.json"
+        ],
+        "counterpoint": [
+          "001_counterpoint.json"
+        ]
+      },
+      "protocol": [
+        "sabrina_spatial_field_protocol_v1.json"
+      ]
+    }
+  },
+
+  "analysis_capabilities_after_dataset_growth": [
+    "spatial pattern classification",
+    "counterpoint retrieval across environments",
+    "sensory fingerprint comparison",
+    "Graph-RAG spatial reasoning"
+  ],
+
+  "core_concept": "Human sensory perception translated into structured data readable by AI systems."
+}
