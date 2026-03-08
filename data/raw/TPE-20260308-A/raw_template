@@ -1,0 +1,73 @@
+{
+  "record_type": "raw_field_note",
+  "record_id": "TPE-20260308-LALAPORT-RAW-001",
+  "observer": "Sabrina Lin",
+  "location": "LaLaport Nangang, Taipei",
+  "date": "2026-03-08",
+  "observation_mode": [
+    "walking",
+    "visual observation",
+    "casual photography"
+  ],
+
+  "context": {
+    "weather": "indoor",
+    "time_of_day": "afternoon",
+    "crowd_density": "medium_to_high",
+    "visit_duration": "short stay"
+  },
+
+  "arrival_impression": "建築結構看起來很努力，但空間氣氛不太讓人想停留。整體感覺比較像交通空間，而不是逛街空間。",
+
+  "spatial_structure": {
+    "geometry": "大型中庭、垂直高度明顯、曲線欄杆與扶梯形成視覺軸",
+    "design_intention": "試圖創造未來感的開放式公共空間",
+    "perceived_effect": "幾何結構清晰，但缺乏情緒承接"
+  },
+
+  "light_condition": {
+    "color_temperature": "cool_white (estimated 4000K-5000K)",
+    "distribution": "uniform downlighting across ceiling",
+    "contrast": "low contrast between floor, ceiling, and storefront",
+    "layering": "minimal layered lighting",
+    "perceived_effect": "視覺焦點不足，整體亮度接近機場或大型交通樞紐"
+  },
+
+  "acoustic_condition": {
+    "materials": [
+      "stone floor",
+      "glass surfaces",
+      "metal railings"
+    ],
+    "sound_behavior": "high reflection",
+    "background_music": "present but diffused",
+    "perceived_effect": "音樂在空間中變成模糊噪音"
+  },
+
+  "material_atmosphere": {
+    "dominant_materials": [
+      "stone",
+      "glass",
+      "metal"
+    ],
+    "tactile_impression": "偏冷、偏硬",
+    "comfort_level": "neutral_to_low"
+  },
+
+  "program_mix": {
+    "zone_1": "futuristic atrium with LED light bands",
+    "zone_2": "family lifestyle retail (e.g. bedding brands)",
+    "zone_3": "traditional herbal / cultural retail",
+    "overall_coherence": "low thematic consistency"
+  },
+
+  "body_response": {
+    "emotional_state": "slight fatigue",
+    "behavior": "不太想久留",
+    "movement_pattern": "快速移動而非停留"
+  },
+
+  "key_observation": "建築幾何與空間氛圍之間存在落差。",
+
+  "reflection": "這是一個設計投入很多，但整體氣氛尚未被整合的商業空間。"
+}
