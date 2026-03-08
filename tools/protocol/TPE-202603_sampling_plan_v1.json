@@ -1,0 +1,72 @@
+{
+  "sampling_plan": {
+    "phase": "Taipei_pre_Kyoto_fieldwork",
+    "period": "2026-03",
+    "records": [
+      {
+        "record_id": "TPE-20260308-A",
+        "site": "Nangang LaLaport",
+        "type": "commercial_space",
+        "status": "completed"
+      },
+      {
+        "record_id": "TPE-202603XX-A",
+        "site": "Japanese Hair Salon",
+        "type": "micro_service_space",
+        "status": "planned"
+      },
+      {
+        "record_id": "TPE-20260311-A",
+        "site": "燈燈庵 (空間本身)",
+        "type": "restaurant_spatial_environment",
+        "status": "planned"
+      },
+      {
+        "record_id": "TPE-20260311-B",
+        "site": "Freeman Wine Dinner",
+        "type": "layered_event_experience",
+        "status": "planned"
+      },
+      {
+        "record_id": "TPE-202603XX-A",
+        "site": "行天宮",
+        "condition": "weekday_morning",
+        "type": "temple_space",
+        "status": "planned"
+      },
+      {
+        "record_id": "TPE-202603XX-B",
+        "site": "行天宮",
+        "condition": "weekend_afternoon",
+        "type": "temple_space",
+        "status": "planned"
+      },
+      {
+        "record_id": "TPE-202603XX-C",
+        "site": "龍山寺",
+        "condition": "weekday_morning",
+        "type": "temple_space",
+        "status": "planned"
+      },
+      {
+        "record_id": "TPE-202603XX-D",
+        "site": "龍山寺",
+        "condition": "weekend_afternoon",
+        "type": "temple_space",
+        "status": "planned"
+      },
+      {
+        "record_id": "TPE-202603XX-E",
+        "site": "農禪寺",
+        "type": "zen_spiritual_space",
+        "status": "planned"
+      },
+      {
+        "record_id": "TPE-202603XX-F",
+        "site": "士林官邸鬱金香展",
+        "type": "seasonal_landscape_event",
+        "status": "planned"
+      }
+    ]
+  }
+}
