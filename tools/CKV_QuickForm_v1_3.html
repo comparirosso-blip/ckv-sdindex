@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CKV 快速田野評分表 v1.3</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #faf7f2; font-family: 'Georgia', serif; }
+  input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 3px; background: transparent; cursor: pointer; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: #2c1810; cursor: pointer; }
+  input[type=range]::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: #2c1810; cursor: pointer; border: none; }
+  select { -webkit-appearance: none; appearance: none; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #f0e8d8; }
+  ::-webkit-scrollbar-thumb { background: #d4c5b0; border-radius: 3px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+
+const { useState } = React;
+
+const SITE_TYPES = ["zen_temple_garden","imperial_garden","urban_public_space","agricultural_terroir","winery_vineyard","immersive_overnight","natural_landscape","commercial_district","interview_accompanied","other"];
+const VT_SUBTYPES = ["architectural_heritage","agricultural_terroir","biographical_founder","intangible_practice","corporate_constructed","non_intervention_natural"];
+const VR_SOURCES = ["architectural_design","social_protocol","invited_openness","cognitive_compression","existential_permission","guided_tour_managed"];
+const VE_TRIGGERS = ["external_narrative_AI","external_narrative_human","preloaded_knowledge","intrinsic_spatial","self_time_projection","none"];
+// v1.2 新增
+const VL_SOURCES = ["natural_diffused","natural_direct","artificial_warm","artificial_neutral","mixed","candlelight_lantern"];
+const VG_SUBTYPES = ["enclosure_deep","enclosure_shallow","open_framed","open_unframed","layered_threshold","void_centred","geometric_strict","geometric_organic"];
+const RESILIENCE_LEVELS = ["low","medium","high","exceptional"];
+const VISIT_MODES = ["solo_free","couple_free","guided_tour","interview_accompanied","immersive_overnight","repeat_visit"];
+const EMOTION_TYPES = ["expectation_collapse_reframe","flat_positive","ascending_resonance","melancholy_empathy","intellectual_compression","existential_release","surprise_delight","other"];
+const SEASONS = ["winter","early_spring","spring","summer","autumn","late_autumn"];
+const TIMES = ["morning","midday","afternoon","evening","night","full_day"];
+const CROWDS = ["empty","very_low","low","moderate","high","crowded"];
+
+function ScoreSlider({ label, dimKey, value, onChange, note, onNoteChange }) {
+  return (
+    <div style={{marginBottom:"2rem"}}>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"baseline",marginBottom:"0.5rem"}}>
+        <span style={{fontFamily:"'Courier New',monospace",fontSize:"0.82rem",color:"#8b7355",letterSpacing:"0.1em",textTransform:"uppercase"}}>{label}</span>
+        <span style={{fontFamily:"'Georgia',serif",fontSize:"1.8rem",color:"#2c1810",fontWeight:"300"}}>{value.toFixed(1)}</span>
+      </div>
+      <div style={{position:"relative",height:"3px",background:"#e8ddd0",borderRadius:"2px",marginBottom:"0.75rem"}}>
+        <div style={{position:"absolute",left:0,top:0,height:"100%",width:`${value*10}%`,background:"linear-gradient(90deg,#8b7355,#2c1810)",borderRadius:"2px",transition:"width 0.15s ease"}} />
+        <input type="range" min="0" max="10" step="0.5" value={value}
+          onChange={e => onChange(parseFloat(e.target.value))}
+          style={{position:"absolute",top:"-8px",left:0,width:"100%",opacity:0,cursor:"pointer",height:"20px"}} />
+      </div>
+      <input type="text" placeholder="field note..." value={note} onChange={e => onNoteChange(e.target.value)}
+        style={{width:"100%",background:"transparent",border:"none",borderBottom:"1px solid #d4c5b0",fontFamily:"'Georgia',serif",fontSize:"0.85rem",color:"#5a4a3a",padding:"0.4rem 0",outline:"none",fontStyle:"italic"}} />
+    </div>
+  );
+}
+
+// v1.2: 新增 ResilienceSlider（簡單 4 段選擇）
+function ResilienceField({ value, onChange }) {
+  return (
+    <div style={{marginBottom:"1.5rem"}}>
+      <label style={{display:"block",fontFamily:"'Courier New',monospace",fontSize:"0.72rem",color:"#8b7355",letterSpacing:"0.1em",textTransform:"uppercase",marginBottom:"0.75rem"}}>
+        感官耐受度 Sensory Resilience (R)
+        <span style={{fontWeight:"normal",marginLeft:"0.5rem",color:"#a89880",fontSize:"0.65rem"}}>— 此空間對干擾的抵抗能力，獨立於當日人潮</span>
+      </label>
+      <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:"0.5rem"}}>
+        {RESILIENCE_LEVELS.map(level => (
+          <button key={level} onClick={() => onChange(level)}
+            style={{
+              fontFamily:"'Courier New',monospace",fontSize:"0.7rem",letterSpacing:"0.08em",
+              textTransform:"uppercase",padding:"0.6rem 0.4rem",border:"1px solid",
+              cursor:"pointer",transition:"all 0.15s ease",
+              background: value===level ? "#2c1810" : "transparent",
+              color: value===level ? "#f0e8d8" : "#8b7355",
+              borderColor: value===level ? "#2c1810" : "#d4c5b0"
+            }}>{level}</button>
+        ))}
+      </div>
+      <div style={{marginTop:"0.5rem",fontFamily:"'Georgia',serif",fontSize:"0.75rem",color:"#a89880",fontStyle:"italic"}}>
+        {value==="low" && "空間容易因人潮或噪音而崩潰（嵐山竹林）"}
+        {value==="medium" && "有一定防禦力，但高峰期明顯受損"}
+        {value==="high" && "即使旺季仍能保留核心感官質感（大德寺）"}
+        {value==="exceptional" && "幾乎不受干擾，結構性免疫（深山古寺）"}
+      </div>
+    </div>
+  );
+}
+
+function SelectField({ label, value, onChange, options, note }) {
+  return (
+    <div style={{marginBottom:"1.5rem"}}>
+      <label style={{display:"block",fontFamily:"'Courier New',monospace",fontSize:"0.72rem",color:"#8b7355",letterSpacing:"0.1em",textTransform:"uppercase",marginBottom:"0.5rem"}}>
+        {label}{note && <span style={{fontWeight:"normal",marginLeft:"0.5rem",color:"#a89880",fontSize:"0.65rem"}}>— {note}</span>}
+      </label>
+      <div style={{position:"relative"}}>
+        <select value={value} onChange={e => onChange(e.target.value)}
+          style={{width:"100%",background:"#faf7f2",border:"1px solid #d4c5b0",fontFamily:"'Georgia',serif",fontSize:"0.9rem",color:"#2c1810",padding:"0.6rem 2rem 0.6rem 0.8rem",outline:"none",cursor:"pointer",borderRadius:"2px"}}>
+          {options.map(o => <option key={o} value={o}>{o}</option>)}
+        </select>
+        <span style={{position:"absolute",right:"0.8rem",top:"50%",transform:"translateY(-50%)",color:"#8b7355",pointerEvents:"none",fontSize:"0.7rem"}}>▾</span>
+      </div>
+    </div>
+  );
+}
+
+function TextField({ label, value, onChange, multiline, placeholder }) {
+  const baseStyle = {width:"100%",background:"transparent",border:"1px solid #d4c5b0",fontFamily:"'Georgia',serif",fontSize:"0.9rem",color:"#2c1810",padding:"0.6rem 0.8rem",outline:"none",borderRadius:"2px",resize:multiline?"vertical":"none"};
+  return (
+    <div style={{marginBottom:"1.5rem"}}>
+      <label style={{display:"block",fontFamily:"'Courier New',monospace",fontSize:"0.72rem",color:"#8b7355",letterSpacing:"0.1em",textTransform:"uppercase",marginBottom:"0.5rem"}}>{label}</label>
+      {multiline
+        ? <textarea value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder} rows={3} style={baseStyle} />
+        : <input type="text" value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder} style={baseStyle} />}
+    </div>
+  );
+}
+
+function App() {
+  const [step, setStep] = useState(0);
+  const [copied, setCopied] = useState(false);
+  const [saved, setSaved] = useState(false);
+
+  const [meta, setMeta] = useState({
+    site_name_zh:"",site_name_local:"",site_name_en:"",
+    city:"",region:"",country:"",date:"",
+    site_type:SITE_TYPES[0],visit_mode:VISIT_MODES[0],
+    companion:"",weather:"",season:SEASONS[0],time_of_day:TIMES[2],crowd_density:CROWDS[2]
+  });
+
+  const [scores, setScores] = useState({Vt:7.0,Vl:6.0,Vr:6.0,Vg:4.0,Ve:7.0});
+  const [notes, setNotes] = useState({Vt:"",Vl:"",Vr:"",Vg:"",Ve:""});
+
+  const [subtypes, setSubtypes] = useState({
+    Vt_subtype:VT_SUBTYPES[0],
+    Vl_source:VL_SOURCES[0],       // v1.2 新增
+    Vr_source:VR_SOURCES[0],
+    Vg_subtype:VG_SUBTYPES[0],     // v1.2 新增
+    Ve_trigger:VE_TRIGGERS[0]
+  });
+
+  // v1.2 新增耐受度
+  const [resilience, setResilience] = useState("medium");
+
+  const [emotion, setEmotion] = useState({
+    entry_state:"",turning_point:"",exit_state:"",
+    trajectory_type:EMOTION_TYPES[0],key_insight:""
+  });
+
+  const [extra, setExtra] = useState({
+    sensory_saturation_effect:false,preloaded_knowledge:false,
+    ai_collaboration:false,repeat_visit:false,
+    paired_record:"",
+    ideal_condition:"",   // v1.2 新增
+    research_finding:""
+  });
+
+  const sdindex = ((scores.Vt+scores.Vl+scores.Vr+scores.Vg+scores.Ve)/50*10).toFixed(2);
+
+  const generateID = () => {
+    if (!meta.region||!meta.date) return "XXX-00000000-A";
+    const prefix = meta.region.slice(0,3).toUpperCase();
+    const dateStr = meta.date.replace(/-/g,"");
+    return `${prefix}-${dateStr}-A`;
+  };
+
+  const generateJSON = () => {
+    const record = {
+      record_id: generateID(),
+      schema_version: "1.3",
+      generated_at: new Date().toISOString(),
+      site: {
+        name_zh: meta.site_name_zh,
+        name_local: meta.site_name_local || null,
+        name_en: meta.site_name_en,
+        city: meta.city, region: meta.region, country: meta.country,
+        site_type: meta.site_type
+      },
+      observation: {
+        date: meta.date, time_of_day: meta.time_of_day, season: meta.season,
+        weather: meta.weather, crowd_density: meta.crowd_density,
+        visit_mode: meta.visit_mode, companion: meta.companion,
+        observer_flags: {
+          sensory_saturation_effect: extra.sensory_saturation_effect,
+          preloaded_knowledge_active: extra.preloaded_knowledge,
+          ai_collaboration_during_visit: extra.ai_collaboration,
+          repeat_visit: extra.repeat_visit
+        }
+      },
+      vs_vector: { Vt: scores.Vt, Vl: scores.Vl, Vr: scores.Vr, Vg: scores.Vg, Ve: scores.Ve },
+      vs_subtypes: {
+        Vt_subtype: subtypes.Vt_subtype,
+        Vl_source: subtypes.Vl_source,       // v1.2
+        Vr_source: subtypes.Vr_source,
+        Vg_subtype: subtypes.Vg_subtype,     // v1.2
+        Ve_trigger: subtypes.Ve_trigger
+      },
+      sdindex_computation: {
+        raw_sum: parseFloat((scores.Vt+scores.Vl+scores.Vr+scores.Vg+scores.Ve).toFixed(1)),
+        max_possible: 50,
+        sdindex_score: parseFloat(sdindex),
+        formula: "sum(Vt+Vl+Vr+Vg+Ve) / 50 * 10"
+      },
+      sensory_resilience: {                   // v1.2
+        level: resilience,
+        note: "observer assessment of space resistance to crowding/noise, independent of current crowd_density"
+      },
+      field_notes: { Vt: notes.Vt, Vl: notes.Vl, Vr: notes.Vr, Vg: notes.Vg, Ve: notes.Ve },
+      emotion_trajectory: {
+        entry_state: emotion.entry_state,
+        turning_point: emotion.turning_point || "none",
+        exit_state: emotion.exit_state,
+        trajectory_type: emotion.trajectory_type,
+        key_insight: emotion.key_insight
+      },
+      counterpoint: { paired_record: extra.paired_record || null },
+      ideal_condition: extra.ideal_condition || null,   // v1.2
+      research_finding: extra.research_finding || null,
+      asset_class: "Gold_Sample",
+      usable_for_llm_training: true,
+      ip_status: {
+        author: "Sabrina",
+        created_at: new Date().toISOString(),
+        license: "CC-BY-4.0",
+        locked: true
+      }
+    };
+    return JSON.stringify(record, null, 2);
+  };
+
+  const handleCopy = () => {
+    const json = generateJSON();
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(json).then(() => { setCopied(true); setTimeout(()=>setCopied(false),2000); });
+    } else {
+      const ta = document.createElement("textarea");
+      ta.value = json; document.body.appendChild(ta); ta.select();
+      document.execCommand("copy"); document.body.removeChild(ta);
+      setCopied(true); setTimeout(()=>setCopied(false),2000);
+    }
+  };
+
+  const handleSave = () => {
+    const json = generateJSON();
+    const blob = new Blob([json], {type:"application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = `${generateID()}.json`;
+    document.body.appendChild(a); a.click();
+    document.body.removeChild(a); URL.revokeObjectURL(url);
+    setSaved(true); setTimeout(()=>setSaved(false),2000);
+  };
+
+  const handleReset = () => {
+    setStep(0);
+    setMeta({site_name_zh:"",site_name_local:"",site_name_en:"",city:"",region:"",country:"",date:"",site_type:SITE_TYPES[0],visit_mode:VISIT_MODES[0],companion:"",weather:"",season:SEASONS[0],time_of_day:TIMES[2],crowd_density:CROWDS[2]});
+    setScores({Vt:7.0,Vl:6.0,Vr:6.0,Vg:4.0,Ve:7.0});
+    setNotes({Vt:"",Vl:"",Vr:"",Vg:"",Ve:""});
+    setSubtypes({Vt_subtype:VT_SUBTYPES[0],Vl_source:VL_SOURCES[0],Vr_source:VR_SOURCES[0],Vg_subtype:VG_SUBTYPES[0],Ve_trigger:VE_TRIGGERS[0]});
+    setResilience("medium");
+    setEmotion({entry_state:"",turning_point:"",exit_state:"",trajectory_type:EMOTION_TYPES[0],key_insight:""});
+    setExtra({sensory_saturation_effect:false,preloaded_knowledge:false,ai_collaboration:false,repeat_visit:false,paired_record:"",ideal_condition:"",research_finding:""});
+  };
+
+  const steps = ["地點","評分","標註","情緒","備註","輸出"];
+
+  const sectionTitle = {fontFamily:"'Courier New',monospace",fontSize:"0.68rem",letterSpacing:"0.15em",textTransform:"uppercase",color:"#8b7355",marginBottom:"2rem",paddingBottom:"0.75rem",borderBottom:"1px solid #e8ddd0"};
+  const btnPrimary = {fontFamily:"'Courier New',monospace",fontSize:"0.78rem",letterSpacing:"0.1em",textTransform:"uppercase",padding:"0.85rem 1.8rem",background:"#2c1810",color:"#f0e8d8",border:"none",cursor:"pointer",marginRight:"0.75rem"};
+  const btnSecondary = {fontFamily:"'Courier New',monospace",fontSize:"0.78rem",letterSpacing:"0.1em",textTransform:"uppercase",padding:"0.85rem 1.8rem",background:"transparent",color:"#8b7355",border:"1px solid #d4c5b0",cursor:"pointer",marginRight:"0.75rem"};
+
+  // v1.2 changelog badge
+  const v12badge = (text) => (
+    <span style={{fontFamily:"'Courier New',monospace",fontSize:"0.6rem",background:"#e8ddd0",color:"#8b7355",padding:"0.1rem 0.4rem",borderRadius:"2px",marginLeft:"0.6rem",verticalAlign:"middle",letterSpacing:"0.05em"}}>v1.2+</span>
+  );
+
+  return (
+    <div style={{minHeight:"100vh",background:"#faf7f2"}}>
+      {/* Header */}
+      <div style={{background:"#2c1810",color:"#f0e8d8",padding:"1.75rem 3rem",borderBottom:"3px solid #8b7355"}}>
+        <div style={{fontFamily:"'Courier New',monospace",fontSize:"0.65rem",letterSpacing:"0.2em",color:"#8b7355",marginBottom:"0.4rem"}}>CULTURAL KNOWLEDGE VECTOR · SDIndex Framework v1.3</div>
+        <div style={{fontSize:"1.4rem",fontWeight:"300",letterSpacing:"0.05em"}}>快速田野評分表</div>
+        <div style={{fontFamily:"'Courier New',monospace",fontSize:"0.7rem",color:"#a89880",marginTop:"0.3rem"}}>Sabrina · {new Date().getFullYear()}</div>
+      </div>
+
+      <div style={{maxWidth:"720px",margin:"0 auto",padding:"3rem 2rem"}}>
+        {/* Step Nav */}
+        <div style={{display:"flex",gap:0,marginBottom:"3rem",borderBottom:"1px solid #d4c5b0",overflowX:"auto"}}>
+          {steps.map((s,i) => (
+            <button key={i} onClick={()=>setStep(i)} style={{fontFamily:"'Courier New',monospace",fontSize:"0.68rem",letterSpacing:"0.08em",textTransform:"uppercase",padding:"0.75rem 1.1rem",border:"none",background:"transparent",color:i===step?"#2c1810":"#a89880",borderBottom:i===step?"2px solid #2c1810":"2px solid transparent",cursor:"pointer",whiteSpace:"nowrap",marginBottom:"-1px",flexShrink:0}}>
+              <span style={{marginRight:"0.4rem",opacity:0.5}}>{i+1}</span>{s}
+            </button>
+          ))}
+        </div>
+
+        {/* Step 0: 地點 */}
+        {step===0 && (
+          <div>
+            <div style={sectionTitle}>地點基本資訊</div>
+            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"1rem"}}>
+              <TextField label="地名（中文）" value={meta.site_name_zh} onChange={v=>setMeta({...meta,site_name_zh:v})} placeholder="龍安寺 / 迪化街" />
+              <TextField label="地名（英文）" value={meta.site_name_en} onChange={v=>setMeta({...meta,site_name_en:v})} placeholder="Ryoanji / Dihua Street" />
+            </div>
+            <TextField
+              label={<span>地名（當地語言）<span style={{fontFamily:"'Courier New',monospace",fontSize:"0.6rem",background:"#e8ddd0",color:"#8b7355",padding:"0.1rem 0.4rem",borderRadius:"2px",marginLeft:"0.6rem",verticalAlign:"middle"}}>optional</span></span>}
+              value={meta.site_name_local}
+              onChange={v=>setMeta({...meta,site_name_local:v})}
+              placeholder="龍安寺（日文）/ Dihua St.（英文原名）/ 其他語言"
+            />
+            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:"1rem"}}>
+              <TextField label="城市" value={meta.city} onChange={v=>setMeta({...meta,city:v})} placeholder="Kyoto / Taipei" />
+              <TextField label="地區代碼" value={meta.region} onChange={v=>setMeta({...meta,region:v})} placeholder="KYT / TPE / OSK" />
+              <TextField label="國家" value={meta.country} onChange={v=>setMeta({...meta,country:v})} placeholder="JP / TW / FR" />
+            </div>
+            <TextField label="田野日期" value={meta.date} onChange={v=>setMeta({...meta,date:v})} placeholder="2026-03-08" />
+            <SelectField label="場域類型" value={meta.site_type} onChange={v=>setMeta({...meta,site_type:v})} options={SITE_TYPES} />
+            <SelectField label="參訪模式" value={meta.visit_mode} onChange={v=>setMeta({...meta,visit_mode:v})} options={VISIT_MODES} />
+            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"1rem"}}>
+              <TextField label="同行者" value={meta.companion} onChange={v=>setMeta({...meta,companion:v})} placeholder="老公 / solo" />
+              <TextField label="天氣" value={meta.weather} onChange={v=>setMeta({...meta,weather:v})} placeholder="晴、陰、雨..." />
+            </div>
+            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:"1rem"}}>
+              <SelectField label="季節" value={meta.season} onChange={v=>setMeta({...meta,season:v})} options={SEASONS} />
+              <SelectField label="時段" value={meta.time_of_day} onChange={v=>setMeta({...meta,time_of_day:v})} options={TIMES} />
+              <SelectField label="人潮密度" value={meta.crowd_density} onChange={v=>setMeta({...meta,crowd_density:v})} options={CROWDS} />
+            </div>
+          </div>
+        )}
+
+        {/* Step 1: 評分 */}
+        {step===1 && (
+          <div>
+            <div style={sectionTitle}>感官向量評分 Vs</div>
+            <div style={{background:"#f0e8d8",padding:"1rem 1.5rem",marginBottom:"2.5rem",borderLeft:"3px solid #8b7355",display:"flex",alignItems:"baseline",gap:"1rem"}}>
+              <span style={{fontFamily:"'Courier New',monospace",fontSize:"0.8rem",color:"#8b7355"}}>SDIndex</span>
+              <span style={{fontFamily:"'Georgia',serif",fontSize:"2.2rem",color:"#2c1810",fontWeight:"300"}}>{sdindex}</span>
+              <span style={{fontFamily:"'Courier New',monospace",fontSize:"0.75rem",color:"#a89880"}}> / 10</span>
+            </div>
+            {[["Vt — 傳統文化密度","Vt"],["Vl — 光線質感","Vl"],["Vr — 空間克制度","Vr"],["Vg — 空間幾何結構感","Vg"],["Ve — 時間感","Ve"]].map(([label,key])=>(
+              <ScoreSlider key={key} label={label} dimKey={key} value={scores[key]} onChange={v=>setScores({...scores,[key]:v})} note={notes[key]} onNoteChange={v=>setNotes({...notes,[key]:v})} />
+            ))}
+          </div>
+        )}
+
+        {/* Step 2: 標註 */}
+        {step===2 && (
+          <div>
+            <div style={sectionTitle}>維度子類型標註</div>
+            <SelectField label="Vt 子類型" value={subtypes.Vt_subtype} onChange={v=>setSubtypes({...subtypes,Vt_subtype:v})} options={VT_SUBTYPES} />
+
+            {/* v1.2: Vl 光源標註 */}
+            <div style={{position:"relative"}}>
+              <SelectField
+                label={<span>Vl 光源類型{v12badge()}</span>}
+                value={subtypes.Vl_source}
+                onChange={v=>setSubtypes({...subtypes,Vl_source:v})}
+                options={VL_SOURCES}
+                note="自然散射 / 直射 / 人工暖 / 人工中性 / 混合 / 燈籠燭光"
+              />
+            </div>
+
+            <SelectField label="Vr 來源" value={subtypes.Vr_source} onChange={v=>setSubtypes({...subtypes,Vr_source:v})} options={VR_SOURCES} />
+
+            {/* v1.2: Vg 幾何子類型 */}
+            <SelectField
+              label={<span>Vg 幾何子類型{v12badge()}</span>}
+              value={subtypes.Vg_subtype}
+              onChange={v=>setSubtypes({...subtypes,Vg_subtype:v})}
+              options={VG_SUBTYPES}
+              note="空間結構的幾何性格"
+            />
+
+            <SelectField label="Ve 啟動機制" value={subtypes.Ve_trigger} onChange={v=>setSubtypes({...subtypes,Ve_trigger:v})} options={VE_TRIGGERS} />
+
+            {/* v1.2: 感官耐受度 */}
+            <div style={{marginTop:"2rem",paddingTop:"2rem",borderTop:"1px solid #e8ddd0"}}>
+              <ResilienceField value={resilience} onChange={setResilience} />
+            </div>
+
+            <div style={{marginTop:"2rem"}}>
+              <div style={sectionTitle}>觀察者狀態標記</div>
+              {[["sensory_saturation_effect","感官飽和效應（看太多同類場域）"],["preloaded_knowledge","預載知識激活（書稿/研究背景投射）"],["ai_collaboration","現場 AI 協作（即時資訊輔助）"],["repeat_visit","重複參訪（非首次）"]].map(([key,label])=>(
+                <label key={key} style={{display:"flex",alignItems:"center",gap:"0.75rem",marginBottom:"1rem",cursor:"pointer"}}>
+                  <input type="checkbox" checked={extra[key]} onChange={e=>setExtra({...extra,[key]:e.target.checked})} style={{accentColor:"#2c1810",width:"16px",height:"16px",cursor:"pointer"}} />
+                  <span style={{fontFamily:"'Georgia',serif",fontSize:"0.9rem",color:"#2c1810"}}>{label}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Step 3: 情緒 */}
+        {step===3 && (
+          <div>
+            <div style={sectionTitle}>情緒軌跡</div>
+            <TextField label="入場狀態" value={emotion.entry_state} onChange={v=>setEmotion({...emotion,entry_state:v})} placeholder="高期待 / 零預期 / 感官疲勞 / 旅途放鬆..." multiline />
+            <TextField label="轉折點（無則留空）" value={emotion.turning_point} onChange={v=>setEmotion({...emotion,turning_point:v})} placeholder="歷史敘事介入 / 知識突然激活 / 空間意外打開..." multiline />
+            <TextField label="離場狀態" value={emotion.exit_state} onChange={v=>setEmotion({...emotion,exit_state:v})} placeholder="共鳴 / 平靜 / 身體放鬆 / 被收留..." multiline />
+            <SelectField label="軌跡類型" value={emotion.trajectory_type} onChange={v=>setEmotion({...emotion,trajectory_type:v})} options={EMOTION_TYPES} />
+            <TextField label="核心洞察 Key Insight" value={emotion.key_insight} onChange={v=>setEmotion({...emotion,key_insight:v})} placeholder="這個場域給你最精準的一句話..." multiline />
+          </div>
+        )}
+
+        {/* Step 4: 備註 */}
+        {step===4 && (
+          <div>
+            <div style={sectionTitle}>研究備註</div>
+            <TextField label="配對記錄 ID（counterpoint）" value={extra.paired_record} onChange={v=>setExtra({...extra,paired_record:v})} placeholder="KYT-20260324-A（若有對照組）" />
+
+            {/* v1.2: 最佳採樣條件 */}
+            <div style={{position:"relative"}}>
+              <TextField
+                label={<span>最佳採樣條件 Ideal Condition{v12badge()}</span>}
+                value={extra.ideal_condition}
+                onChange={v=>setExtra({...extra,ideal_condition:v})}
+                placeholder="早晨7點前、非楓葉季、工作日平日..."
+                multiline
+              />
+              <div style={{fontFamily:"'Georgia',serif",fontSize:"0.75rem",color:"#a89880",fontStyle:"italic",marginTop:"-1rem",marginBottom:"1.5rem"}}>
+                此欄供 Graph RAG 解析，請描述讓這個空間達到最高 SDIndex 的客觀條件
+              </div>
+            </div>
+
+            <TextField label="研究發現" value={extra.research_finding} onChange={v=>setExtra({...extra,research_finding:v})} placeholder="此記錄對論文的特殊貢獻、異常發現..." multiline />
+          </div>
+        )}
+
+        {/* Step 5: 輸出 */}
+        {step===5 && (
+          <div>
+            <div style={sectionTitle}>記錄輸出</div>
+            <div style={{background:"#f0e8d8",padding:"1.25rem 1.5rem",marginBottom:"2rem",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+              <div>
+                <div style={{fontFamily:"'Courier New',monospace",fontSize:"0.68rem",color:"#8b7355",marginBottom:"0.3rem"}}>RECORD ID</div>
+                <div style={{fontFamily:"'Courier New',monospace",fontSize:"1rem",color:"#2c1810",fontWeight:"bold"}}>{generateID()}</div>
+              </div>
+              <div style={{textAlign:"center"}}>
+                <div style={{fontFamily:"'Courier New',monospace",fontSize:"0.68rem",color:"#8b7355",marginBottom:"0.3rem"}}>RESILIENCE</div>
+                <div style={{fontFamily:"'Courier New',monospace",fontSize:"0.9rem",color:"#2c1810",textTransform:"uppercase"}}>{resilience}</div>
+              </div>
+              <div style={{textAlign:"right"}}>
+                <div style={{fontFamily:"'Courier New',monospace",fontSize:"0.68rem",color:"#8b7355",marginBottom:"0.3rem"}}>SDINDEX</div>
+                <div style={{fontFamily:"'Georgia',serif",fontSize:"2.2rem",color:"#2c1810",fontWeight:"300"}}>{sdindex}</div>
+              </div>
+            </div>
+
+            <div style={{display:"grid",gridTemplateColumns:"repeat(5,1fr)",gap:"0.5rem",marginBottom:"2rem"}}>
+              {["Vt","Vl","Vr","Vg","Ve"].map(k=>(
+                <div key={k} style={{background:"#fff",border:"1px solid #e8ddd0",padding:"0.75rem",textAlign:"center"}}>
+                  <div style={{fontFamily:"'Courier New',monospace",fontSize:"0.62rem",color:"#8b7355",marginBottom:"0.3rem"}}>{k}</div>
+                  <div style={{fontFamily:"'Georgia',serif",fontSize:"1.3rem",color:"#2c1810"}}>{scores[k].toFixed(1)}</div>
+                </div>
+              ))}
+            </div>
+
+            <textarea readOnly value={generateJSON()}
+              style={{width:"100%",height:"300px",background:"#1a1209",color:"#a8c890",fontFamily:"'Courier New',monospace",fontSize:"0.72rem",padding:"1.25rem",border:"none",borderRadius:"2px",resize:"vertical",lineHeight:"1.7"}} />
+
+            <div style={{marginTop:"1.5rem",display:"flex",flexWrap:"wrap",gap:"0.5rem"}}>
+              <button style={btnPrimary} onClick={handleCopy}>{copied?"✓ Copied":"Copy JSON"}</button>
+              <button style={{...btnPrimary,background:"#5a4a3a"}} onClick={handleSave}>{saved?"✓ 已下載":"下載 .json 檔"}</button>
+              <button style={btnSecondary} onClick={handleReset}>＋ 新記錄</button>
+            </div>
+          </div>
+        )}
+
+        {/* Navigation */}
+        <div style={{marginTop:"3rem",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+          {step>0
+            ? <button style={btnSecondary} onClick={()=>setStep(step-1)}>← 上一步</button>
+            : <div/>}
+          {step<5
+            ? <button style={btnPrimary} onClick={()=>setStep(step+1)}>下一步 →</button>
+            : <div/>}
+        </div>
+
+        <div style={{marginTop:"4rem",paddingTop:"2rem",borderTop:"1px solid #e8ddd0",fontFamily:"'Courier New',monospace",fontSize:"0.65rem",color:"#c4b5a0",textAlign:"center",letterSpacing:"0.1em"}}>
+          CKV Schema v1.3 · SDIndex Framework · © Sabrina · CC-BY-4.0
+          <br/><span style={{fontSize:"0.6rem",opacity:0.7}}>v1.3 changes: region-neutral location fields · site_name_local (optional) · country field · prefecture → region</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
