@@ -1,0 +1,190 @@
+{
+  "audit_note_id": "QC-KYT-20260118-A-20260309-EN-01",
+  "record_id": "KYT-20260118-A",
+  "site_name": {
+    "official": "Katsura Imperial Villa",
+    "short": "Katsura"
+  },
+  "audit_metadata": {
+    "audit_type": "qc_audit_note",
+    "language": "en",
+    "audit_focus": [
+      "ai_augmentation_bias",
+      "ve_annotation_consistency",
+      "sensory_vs_knowledge_weighting",
+      "outlier_detection",
+      "llm_training_readiness"
+    ],
+    "source_scope": [
+      "primary_json_record",
+      "sdindex_v11_manuscript"
+    ],
+    "audit_status": "open_critical_inconsistency"
+  },
+  "observed_record_state": {
+    "json_version_observation": {
+      "visit_mode": "guided_tour",
+      "ai_collaboration_during_visit": true,
+      "vs_vector": {
+        "Vt": 9.0,
+        "Vl": 8.5,
+        "Vr": 6.0,
+        "Vg": 9.0,
+        "Ve": 5.5
+      },
+      "Ve_trigger": "self_time_projection",
+      "sdindex_score": 7.6,
+      "sensory_resilience": "exceptional",
+      "research_finding": "Real-time AI supplementation may alter human sensory interpretation.",
+      "usable_for_llm_training": true,
+      "asset_class": "Gold_Sample"
+    },
+    "manuscript_version_observation": {
+      "vs_vector": {
+        "Vt": 9.0,
+        "Vl": 6.5,
+        "Vr": 8.0,
+        "Vg": 3.0,
+        "Ve": 9.0
+      },
+      "Ve_trigger": "external_ai_narrative_trigger",
+      "Ve_shift_claim": "projected_6.0_to_recorded_9.0",
+      "sdindex_score": 7.1,
+      "interpretation_note": "AI-mediated historical narration reframed temporal perception."
+    }
+  },
+  "critical_findings": [
+    {
+      "issue_id": "CF-01",
+      "severity": "critical",
+      "title": "Ve trigger contradiction",
+      "description": "The same sample is labeled as self_time_projection in the primary JSON record, but as external_ai_narrative_trigger in the manuscript appendix.",
+      "why_it_matters": "Ve activation mechanism is a core theoretical field. If this field is unstable, all downstream interpretation, comparison, and model training based on Ve become unreliable.",
+      "recommended_resolution": "Select one canonical primary trigger in the master record. If both mechanisms are genuinely present, introduce secondary_trigger or trigger_stack instead of allowing cross-version overwrite."
+    },
+    {
+      "issue_id": "CF-02",
+      "severity": "critical",
+      "title": "Vector-level inconsistency across versions",
+      "description": "The primary JSON record and the manuscript assign substantially different values to the same sample across Vl, Vr, Vg, Ve, and overall SDIndex.",
+      "why_it_matters": "This is not a narrative difference. It is a numeric version conflict that undermines reproducibility, benchmark integrity, and auditability.",
+      "recommended_resolution": "Establish a canonical_record_version and require all manuscripts, appendices, and visualizations to pull directly from that frozen source."
+    },
+    {
+      "issue_id": "CF-03",
+      "severity": "high",
+      "title": "AI augmentation reshaped exit-state interpretation",
+      "description": "The turning point indicates that real-time consultation of Google AI mode transformed the observer's initial intuition into a historically framed interpretation centered on refined loneliness and political dispossession.",
+      "why_it_matters": "This means the record is not a pure on-site sensory sample. It is a hybrid perception event co-constructed by direct experience and real-time AI narrative input.",
+      "recommended_resolution": "Add explicit metadata such as exit_state_source and augmentation_bias_flag to mark the sample as AI-reframed perception."
+    },
+    {
+      "issue_id": "CF-04",
+      "severity": "medium",
+      "title": "Divergence between sensory resilience and Vr is a governance signal, not noise",
+      "description": "The site is marked as exceptional in sensory resilience, yet Vr is only moderate. The likely cause is not spatial failure, but guided-tour structure and institutional control limiting free stopping, pacing, and self-directed rhythm.",
+      "why_it_matters": "This indicates that institutional orchestration can suppress experienced rhythm even when the physical environment is highly resilient.",
+      "recommended_resolution": "Add governance_interference, rhythm_constraint, or guided_constraint_level as explicit explanatory fields."
+    }
+  ],
+  "bias_analysis": {
+    "ai_augmentation_bias": {
+      "present": true,
+      "bias_type": "real_time_narrative_reframing",
+      "mechanism": [
+        "initial_low-knowledge_spatial_intuition",
+        "real_time_ai_historical_explanation",
+        "schema_activation",
+        "exit_state_reconstruction"
+      ],
+      "affected_fields": [
+        "emotion_trajectory.turning_point",
+        "emotion_trajectory.exit_state",
+        "research_finding",
+        "Ve_trigger",
+        "Ve_score"
+      ],
+      "estimated_effect_on_Ve": {
+        "status": "probable_but_unresolved_due_to_version_conflict",
+        "json_version_signal": "Ve remains relatively low because guided control and managed movement reduce immersive temporal drift.",
+        "manuscript_version_signal": "Ve rises sharply because AI-triggered historical narration deepens temporal projection.",
+        "qc_judgment": "Ve is currently annotation-unstable and should not yet be treated as a settled gold-standard label."
+      }
+    }
+  },
+  "perception_knowledge_weighting": {
+    "assessment": "hybrid_sample",
+    "onsite_direct_sensory_weight": 0.58,
+    "interpretive_inference_weight": 0.17,
+    "real_time_ai_knowledge_injection_weight": 0.25,
+    "rationale": "The sample's historical depth is not derived solely from immediate sensory input. It is stabilized through real-time AI supplementation, so it cannot be treated as a purely sensory record.",
+    "training_risk": "If used without explicit metadata, an LLM may incorrectly learn that AI-assisted historical interpretation is a naturally occurring sensory signal available to any observer on site."
+  },
+  "outlier_detection": {
+    "outlier_flag": true,
+    "outlier_type": "institutional_override_of_spatial_rhythm",
+    "pattern": {
+      "sensory_resilience": "exceptional",
+      "Vr": 6.0,
+      "visit_mode": "guided_tour"
+    },
+    "interpretation": "This sample shows a high-resilience physical environment combined with only moderate experiential rhythm. The anomaly is best explained by institutional pacing and control rather than weak spatial quality.",
+    "analytical_value": "High. It is a strong representative case of human governance interference outweighing physical spatial quality in rhythm formation."
+  },
+  "llm_training_audit": {
+    "current_label_in_record": true,
+    "qc_override_recommendation": "conditional_use_only",
+    "recommended_training_tags": [
+      "hybrid_perception",
+      "ai_augmented",
+      "historical_reframing_present",
+      "governance_constraint_present",
+      "annotation_conflict_unresolved"
+    ],
+    "do_not_use_as": [
+      "pure_sensory_ground_truth",
+      "clean_Ve_benchmark",
+      "single_source_gold_label"
+    ],
+    "safe_use_cases": [
+      "ai_human_coperception_case_study",
+      "ve_activation_mechanism_comparison",
+      "annotation_conflict_methodology_example",
+      "governance_vs_rhythm_anomaly_analysis"
+    ]
+  },
+  "required_actions": [
+    {
+      "priority": 1,
+      "action": "Resolve canonical Ve trigger",
+      "detail": "Make a formal decision between self_time_projection and external_ai_narrative_trigger, or redesign the schema to support a primary-plus-secondary trigger model."
+    },
+    {
+      "priority": 2,
+      "action": "Freeze a canonical Vs vector",
+      "detail": "Confirm the single official vector and SDIndex score for KYT-20260118-A, then align the manuscript and dataset accordingly."
+    },
+    {
+      "priority": 3,
+      "action": "Add augmentation metadata",
+      "detail": "Introduce augmentation_bias_flag, knowledge_injection_mode, and exit_state_source."
+    },
+    {
+      "priority": 4,
+      "action": "Add governance interference metadata",
+      "detail": "Introduce guided_constraint_level or governance_interference to explain why Vr is compressed despite high sensory resilience."
+    },
+    {
+      "priority": 5,
+      "action": "Downgrade training confidence until conflict is resolved",
+      "detail": "Temporarily reclassify the sample from clean Gold_Sample to Gold_Sample_Under_Review or Contested_Gold_Sample."
+    }
+  ],
+  "proposed_status_update": {
+    "current_status_in_record": "Gold_Sample",
+    "recommended_status": "Gold_Sample_Under_Review",
+    "release_readiness": "not_ready_for_benchmark_release",
+    "reason": "Core theoretical fields and numeric vector values remain inconsistent across versions."
+  },
+  "one_sentence_summary": "KYT-20260118-A is a high-value but high-risk hybrid sample: it captures how real-time AI narrative can reshape historical perception, but its Ve mechanism and vector annotations are currently too unstable for use as a clean sensory gold standard."
+}
