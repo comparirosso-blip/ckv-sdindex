@@ -1,0 +1,88 @@
+{
+  "record_id": "KYT-20260226-A",
+  "qc_analysis_version": "1.0",
+  "analysis_role": "senior_data_analyst",
+
+  "bias_check": {
+    "repeat_visit_flag": true,
+    "bias_assessment": {
+      "Vr_bias_risk": "moderate_adaptive_normalization",
+      "Ve_bias_risk": "moderate_adaptive_dulling",
+      "beautification_bias": "low"
+    },
+    "interpretation": "Because the observer has repeatedly visited the site, crowd rhythm may be perceived as part of the normal spatial condition rather than as a disruption. This can slightly inflate Vr scores. At the same time, repeated exposure to the site's touristic transformation may dull sensitivity to temporal distortion, which may lower the Ve evaluation without fully capturing the experiential loss of historical time depth.",
+    "qc_conclusion": "Repeat visits likely reduce novelty-based romanticization, but they may normalize crowd rhythm and partially dull sensitivity to temporal disruption."
+  },
+
+  "entity_extraction_for_graph_rag": {
+    "entities": [
+      {
+        "entity_id": "natural_diffused_light",
+        "type": "healing_factor",
+        "source_field": "Vl_source",
+        "description": "Soft overcast daylight that reduces visual harshness and increases architectural legibility."
+      },
+      {
+        "entity_id": "architectural_heritage_texture",
+        "type": "healing_factor",
+        "source_field": "Vt_subtype",
+        "description": "Historic wooden facades, tiled roofs, and temple-related textures forming a cultural enclosure."
+      },
+      {
+        "entity_id": "pagoda_stair_geometry_anchor",
+        "type": "healing_factor",
+        "source_field": "Vg",
+        "description": "Spatial orientation created by the stair slope and pagoda geometry acting as a visual anchor."
+      }
+    ],
+    "edges": [
+      {
+        "source": "crowd_density",
+        "target": "natural_diffused_light",
+        "relation": "dilutes_restorative_clarity",
+        "strength": "moderate",
+        "explanation": "Higher crowd density does not remove the light structure but weakens its restorative perceptual effect."
+      },
+      {
+        "source": "crowd_density",
+        "target": "architectural_heritage_texture",
+        "relation": "obscures_material_perception",
+        "strength": "strong",
+        "explanation": "Dense visitor presence visually interrupts and partially hides historic material continuity."
+      },
+      {
+        "source": "crowd_density",
+        "target": "pagoda_stair_geometry_anchor",
+        "relation": "reduces_contemplative_function_but_preserves_orientation",
+        "strength": "moderate_to_strong",
+        "explanation": "The landmark geometry still provides spatial orientation, but its contemplative function is weakened by tourist flow."
+      }
+    ]
+  },
+
+  "scenario_simulation": {
+    "scenario": "replace_natural_light_with_artificial_neutral",
+    "assumption": "Natural diffuse daylight is replaced by neutral artificial lighting similar to shopping mall illumination.",
+    "original_vs_vector": {
+      "Vt": 8,
+      "Vl": 6,
+      "Vr": 7,
+      "Vg": 8,
+      "Ve": 2.5
+    },
+    "original_raw_sum": 31.5,
+    "original_sdindex": 6.3,
+    "simulated_vs_vector": {
+      "Vt": 8,
+      "Vl": 3.5,
+      "Vr": 6,
+      "Vg": 8,
+      "Ve": 1.5
+    },
+    "simulated_raw_sum": 27,
+    "simulated_sdindex": 5.4,
+    "score_difference": -0.9,
+    "interpretation": "The site shows a relatively strong dependence on natural diffuse light. While historical materials (Vt) and spatial geometry (Vg) remain stable, artificial lighting significantly reduces perceptual layering and temporal depth. The place still functions structurally, but the experiential sense of historical atmosphere and restorative spatial quality becomes noticeably thinner.",
+    "dependency_assessment": "medium_to_high_light_dependency"
+  }
+}
