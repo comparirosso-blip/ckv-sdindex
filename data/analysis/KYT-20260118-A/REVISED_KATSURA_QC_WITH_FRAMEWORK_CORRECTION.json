@@ -1,0 +1,334 @@
+{
+  "revision_note": {
+    "date": "2026-03-09T14:00:00.000Z",
+    "revision_trigger": "High-level QC feedback correction",
+    "revision_focus": "Three critical gaps identified and addressed"
+  },
+
+  "three_critical_gaps_identification": {
+    "gap_1_ve_contradiction_unresolved": {
+      "issue_description": "Data contains contradictory Ve interpretation markers",
+      "contradiction_detail": {
+        "version_A": "record_id states ve_trigger: 'self_time_projection', Ve(5.5)",
+        "version_B": "SDIndex framework Appendix B references 'External AI Narrative Trigger' with potential Ve shift from ~6.0 → 9.0",
+        "current_status": "Contradiction unresolved in both Claude and original record"
+      },
+      "claude_handling": "Acknowledged caveat but treated as secondary methodological note",
+      "revised_severity": "CRITICAL—This is not a documentation caveat but a LOGIC INSTABILITY",
+      "implication": "If Ve is actually activated via AI narrative trigger (not self_time_projection), then entire Ve(5.5) score rests on unverified mechanism",
+      "resolution_required": "Observer must formally specify: Was Ve(5.5) achieved through self-paced contemplation during site, OR through post-visit AI knowledge scaffolding? These generate fundamentally different phenomenological claims."
+    },
+
+    "gap_2_llm_training_risk_underestimated": {
+      "issue_description": "Claude's recommendation treats LLM usability as 'solvable through annotations'",
+      "claude_statement": "'USABLE_WITH_ANNOTATIONS' — Include methodological caveats in training data headers",
+      "revised_assessment": "This is dangerously optimistic",
+      "the_risk": "LLM models cannot be reliably instructed to distinguish between pure phenomenological data and augmented/mediated data when both are presented in identical field_notes format",
+      "concrete_scenario": {
+        "training_case_1": "LLM learns from pure sensory vector without knowledge scaffolding (ideal)",
+        "training_case_2": "LLM learns from this record, flagged with 'mediated:true' annotation",
+        "model_failure_mode": "Model cannot distinguish whether similar future sensory scores derive from pure observation or AI-augmented observation; treats both as equivalent sensory ground truth",
+        "actual_risk": "Propagates false equivalence between 'what humans naturally perceive' and 'what humans perceive after AI-mediated interpretation'"
+      },
+      "correct_approach": "Not annotations, but SEGREGATION into separate training buckets with explicit schema tags that models must propagate forward"
+    },
+
+    "gap_3_sensory_resilience_schema_incompleteness": {
+      "issue_description": "Claude frames resilience as 'accurate but untested under crowding stress'",
+      "claude_logic": "Sensory_resilience=exceptional is valid prediction but unvalidated by actual crowd stress-testing",
+      "deeper_issue": "This framing misses the actual schema problem",
+      "the_real_problem": "At Katsura, sensory_resilience and Vr measure DIFFERENT VARIABLES that are being conflated",
+      "variable_distinction": {
+        "sensory_resilience_actual_measurement": "Space's intrinsic formal richness and optical design capacity to maintain perceptual quality under stress",
+        "vr_actual_measurement": "Available degree of freedom for observer to self-pace movement and attention allocation",
+        "the_conflict": "At Katsura: physical space can maintain exceptional aesthetic richness (resilience=exceptional), BUT institutional guided-tour structure removes observational freedom (Vr=6, not higher)"
+      },
+      "claude_diagnosis": "Correctly noted Vr(6) reflects 'institutional restraint' and slow imposed rhythm",
+      "claude_error": "Did not recognize this as evidence that resilience and freedom are INDEPENDENT VARIABLES that can violate expected correlation",
+      "schema_implication": "This suggests sensory_resilience schema needs revision: distinguish between formal-aesthetic resilience (space property) vs phenomenological-freedom resilience (access system property)"
+    }
+  },
+
+  "revised_certification_with_corrections": {
+    "record_id": "KYT-20260118-A",
+    "site": "Katsura Imperial Villa",
+
+    "previous_verdict": "CONDITIONAL_GOLD_SAMPLE (88% confidence)",
+    "revised_verdict": "GOLD_SAMPLE–AUGMENTED/MEDIATED_CLASS",
+    "revised_confidence": "82%",
+    "confidence_reduction_reason": "Unresolved Ve mechanism contradiction reduces interpretive stability"
+  },
+
+  "formal_dataset_layering_framework": {
+    "framework_title": "SDIndex Sample Classification Schema v2.0 — Phenomenology Mode Taxonomy",
+    "rationale": "Moving from binary GOLD/NON-GOLD to multi-layer classification based on observation modality and knowledge-injection patterns",
+
+    "layer_1_pure_phenomenology": {
+      "definition": "Direct unmediated sensory observation with no external knowledge scaffolding, no institutional mediation of access, no post-hoc AI consultation during critical reflection periods",
+      "characteristics": [
+        "observer enters site with deliberate knowledge suspension",
+        "no guided tours, no mandatory institutional pacing",
+        "no AI querying during or immediately post-visit reflection",
+        "no prior expectations activated",
+        "first-visit condition preferred"
+      ],
+      "sampling_examples": "Ryōan-ji if visited alone at dawn without guide; ideal Zen temple garden conditions",
+      "ve_accessibility": "HIGHEST—unmediated access to temporal consciousness possible",
+      "training_bucket": "core_sensory_ground_truth",
+      "reliability_flag": "GREEN—minimal confounding variables"
+    },
+
+    "layer_2_mediated_phenomenology": {
+      "definition": "Direct sensory observation that occurs within institutional or systemic mediation structures (guided tours, access restrictions, time controls) but without external knowledge supplementation",
+      "characteristics": [
+        "observer must navigate institutional access protocols",
+        "pacing and attention allocation constrained by external system (tour guide, architectural design perfectionism)",
+        "sensory data is authentic but occurs within bounded conditions",
+        "no post-hoc external knowledge injection",
+        "method of access transparently documented"
+      ],
+      "sampling_examples": "Katsura as currently visited (guided tour required); any heritage site with mandatory access structure",
+      "ve_accessibility": "REDUCED—institutional mediation creates barriers to temporal consciousness even when space has high Ve potential",
+      "training_bucket": "mediated_sensory_observations",
+      "reliability_flag": "YELLOW—institutional variables require schema tags; cannot be trained as if unmediated"
+    },
+
+    "layer_3_ai_augmented_phenomenology": {
+      "definition": "Sensory observation supplemented by AI-assisted knowledge scaffolding that fundamentally alters the observer's post-visit interpretation and emotional trajectory",
+      "characteristics": [
+        "pure sensory experience occurs first (on-site or immediate impression)",
+        "post-hoc AI knowledge injection (biographical research, historical context discovery, thematic reframing)",
+        "observer's emotional_trajectory is substantially modified by AI-provided information",
+        "final emotional closure depends on AI-mediated understanding rather than direct sensory realization"
+      ],
+      "sampling_examples": "Katsura (Prince Toshihito biographical discovery via AI changes entire meaning-structure); potentially Ninenzaka if post-visit AI context altered interpretation",
+      "ve_accessibility": "VARIABLE—AI can partially restore temporal consciousness that institutional mediation suppressed, but this is SUBSTITUTE Ve (via knowledge) not INTRINSIC Ve (via experience)",
+      "training_bucket": "augmented_phenomenology_subclass",
+      "reliability_flag": "RED—AI variable must be explicitly tagged; cannot be treated as natural phenomenological outcome"
+    }
+  },
+
+  "katsura_reclassification_with_schema_tags": {
+    "record_id": "KYT-20260118-A",
+    "site_name": "Katsura Imperial Villa",
+
+    "phenomenology_mode": "MEDIATED_WITH_AI_AUGMENTATION",
+    "mode_breakdown": {
+      "observation_phase": "mediated (guided_tour structure controls pacing and attention)",
+      "reflection_phase": "ai_augmented (post-visit Google search altered emotional trajectory)",
+      "final_interpretation": "hybrid (sensory+mediated+augmented combined)"
+    },
+
+    "required_schema_metadata_tags": {
+      "access_mediation_type": "guided_tour_with_institutional_pace_control",
+      "mediation_severity": "high",
+      "knowledge_injection_timing": "post_entry_during_reflection",
+      "knowledge_injection_source": "ai_external_search",
+      "knowledge_injection_scope": "biographical_narrative_discovery",
+      "ve_mechanism_status": "UNRESOLVED_CONTRADICTION",
+      "ve_mechanism_candidates": [
+        "self_time_projection (as recorded)",
+        "external_ai_narrative_trigger (as suggested by trajectory pattern)"
+      ],
+      "ve_score_stability": "PROVISIONAL_PENDING_MECHANISM_CLARIFICATION"
+    },
+
+    "formal_resolution_required": {
+      "decision_point": "Observer must clarify: Was Ve(5.5) achieved during site immersion or through post-visit AI reflection?",
+      "if_site_immersion": "Ve(5.5) represents constrained self_time_projection under mediated conditions; baseline unmediated potential unknown",
+      "if_post_visit_ai": "Ve(5.5) represents partial restoration of temporal consciousness through knowledge scaffolding; AI played constitutive role in final emotional arc",
+      "consequence": "Classification and training bucket assignment depend on this clarification"
+    }
+  },
+
+  "revised_llm_training_protocol": {
+    "previous_protocol": "Include as GOLD_SAMPLE with annotation flags",
+    "revised_protocol": "SEGREGATED TRAINING APPROACH",
+
+    "training_segregation": {
+      "bucket_assignment": "augmented_phenomenology_subclass",
+      "bucket_definition": "Observations where AI-provided contextual knowledge fundamentally alters emotional trajectory and final interpretation",
+      "training_objective": "Train models to recognize and weight AI-augmented phenomenology patterns; NOT treat as equivalent to pure sensory observations",
+      "schema_propagation": "Model must learn to carry forward 'ai_augmented:true' tag when processing or generating similar records"
+    },
+
+    "explicit_exclusions": {
+      "cannot_use_for": [
+        "Training baseline sensory perception models",
+        "Generating recommendations for 'what humans naturally perceive' at heritage sites",
+        "Building 'pure cultural experience' prediction systems",
+        "Establishing norms for 'authentic visitor experience'"
+      ],
+      "can_use_for": [
+        "Understanding how knowledge scaffolding alters sensory interpretation",
+        "Modeling AI's role in cultural understanding restoration",
+        "Studying institutional mediation effects on phenomenology",
+        "Analyzing how post-hoc narrative reframes emotional experience"
+      ]
+    },
+
+    "model_instruction_requirement": {
+      "issue": "Annotations alone insufficient because models cannot be reliably instructed to distinguish training buckets post-hoc",
+      "solution": "Embed schema-tag propagation as mandatory architectural requirement in model",
+      "example": "If input includes phenomenology_mode:mediated_augmented, output must include same tag in any derivative analysis; model trained to fail if tags removed"
+    }
+  },
+
+  "revised_sensory_resilience_schema": {
+    "issue": "Current resilience measurement conflates space-formal properties with observer-freedom properties",
+    "solution": "Split into two independent measurements",
+
+    "resilience_v1_formal_aesthetic_resilience": {
+      "definition": "Space's intrinsic capacity to maintain perceptual richness and aesthetic quality under stress conditions (crowding, noise, poor light)",
+      "what_it_measures": "Architecture and design properties",
+      "measurement_independence": "Does NOT depend on how observer accesses the space",
+      "katsura_value": "Exceptional—space's formal design is so precise that aesthetic quality would persist under crowd stress"
+    },
+
+    "resilience_v2_phenomenological_access_freedom": {
+      "definition": "Degree of freedom observer has to self-pace attention, movement, and temporal engagement during actual visit",
+      "what_it_measures": "Access system and institutional structure properties",
+      "measurement_independence": "Does NOT depend on underlying space quality (beautiful space with no freedom = low access_freedom)",
+      "katsura_value": "Low-to-Medium (6.0-6.5)—guided-tour mandatory pace prevents free temporal exploration"
+    },
+
+    "revised_schema_implication": {
+      "old_assumption": "High sensory_resilience should enable high Ve, therefore Vt(9)+Vg(9)=exceptional resilience should correlate with higher Ve",
+      "new_understanding": "Sensory_resilience measures formal space properties; access_freedom measures institutional properties. Ve depends on BOTH. At Katsura: high formal resilience but low access_freedom → Ve suppression despite space potential",
+      "schema_correction": "These should be measured and recorded separately, not conflated as single 'sensory_resilience' variable"
+    }
+  },
+
+  "dyadic_reanalysis_with_corrected_schema": {
+    "ninenzaka_kyt_20260226_a": {
+      "phenomenology_mode": "PURE_PHENOMENOLOGY_WITH_TOURIST_MEDIATION",
+      "classification": "Pure observation (no guided structure, no AI consultation) but within high-distraction environment",
+      "formal_resilience": "Medium—decent geometry and cultural signification",
+      "access_freedom": "High—visitor can move freely, set own pace, linger as desired",
+      "ve_suppression_source": "Environmental distraction (tourist cheerfulness, present-moment hyperstimulation) NOT institutional control",
+      "schema_class": "pure_phenomenology (despite tourist interference)"
+    },
+
+    "katsura_kyt_20260118_a": {
+      "phenomenology_mode": "MEDIATED_PHENOMENOLOGY_WITH_AI_AUGMENTATION",
+      "classification": "Observation within guided-tour institutional structure + post-visit AI knowledge injection",
+      "formal_resilience": "Exceptional—perfect aesthetic design",
+      "access_freedom": "Medium-Low—tour pacing and design perfectionism control attention",
+      "ve_suppression_source": "Institutional mediation (pace control, design control) NOT observer capability",
+      "ve_potential_restoration_mechanism": "Post-visit AI biographical knowledge partially restores temporal consciousness that access restriction suppressed",
+      "schema_class": "mediated_phenomenology_with_ai_augmentation"
+    },
+
+    "dyadic_insight_with_corrected_schema": {
+      "previous_insight": "Two records show Ve suppression through different mechanisms (tourism vs institution)",
+      "corrected_insight": "Records demonstrate that Ve suppression depends on ACCESS STRUCTURE more than SPACE QUALITY. Ninenzaka's freedom despite distraction maintains some Ve potential; Katsura's institutional control suppresses Ve regardless of exceptional formal properties. AI can partially compensate for institutional barriers but cannot replace direct phenomenological freedom."
+    }
+  },
+
+  "dataset_stratification_recommendations": {
+    "current_dataset_state": "9 records across Kyoto, Yamanashi, Nagano",
+    "stratification_requirement": "Classify all records by phenomenology_mode BEFORE finalizing gold sample designations",
+
+    "required_stratification_audit": {
+      "action_1": "Review all 9 records and assign phenomenology_mode: {pure, mediated, augmented}",
+      "action_2": "For each record, separate formal_resilience from access_freedom measurements",
+      "action_3": "Clarify Ve mechanism in any record where contradiction exists (like current Katsura)",
+      "action_4": "Document knowledge_injection timing for any AI-involved observations",
+      "timeline": "2-week systematic review"
+    },
+
+    "revised_gold_sample_criteria": {
+      "criterion_1_vector_signal_strength": "Unchanged—Vt+Vg synergy ≥15/20",
+      "criterion_2_ve_diagnostic_clarity": "REVISED—Ve must have unambiguous activation mechanism; contradiction disqualifies until resolved",
+      "criterion_3_emotion_trajectory_integrity": "Unchanged—but must explicitly note if AI is constitutive to trajectory closure",
+      "criterion_4_key_insight_uniqueness": "Unchanged",
+      "criterion_5_methodological_transparency": "REVISED—Must include phenomenology_mode classification and access structure documentation in metadata"
+    },
+
+    "new_gold_sample_tiers": {
+      "tier_1_gold_pure": {
+        "definition": "phenomenology_mode:pure + high vector synergy + unambiguous Ve mechanism",
+        "expected_characteristics": "First-visit unmediated observation without AI consultation",
+        "training_bucket": "core_sensory_ground_truth",
+        "rarity_warning": "Probably rarest tier; most heritage sites have some institutional access control or prior knowledge activation"
+      },
+      "tier_2_gold_mediated": {
+        "definition": "phenomenology_mode:mediated + high vector synergy + transparent access structure documentation",
+        "expected_characteristics": "Honest observation acknowledging institutional or environmental constraints on phenomenology",
+        "training_bucket": "mediated_phenomenology_with_schema_tags",
+        "value_proposition": "Demonstrates how institutions affect sensory assessment; enables modeling of mediation effects"
+      },
+      "tier_3_gold_augmented": {
+        "definition": "phenomenology_mode:augmented + high vector synergy + explicit knowledge_injection documentation + resolved Ve mechanism",
+        "expected_characteristics": "Sensory observation + AI-mediated interpretation where AI's role is transparent",
+        "training_bucket": "augmented_phenomenology_with_augmentation_flags",
+        "value_proposition": "Models AI's role in cultural understanding restoration; prevents false attribution of AI-generated insight to pure perception"
+      }
+    }
+  },
+
+  "katsura_final_verdict_under_revised_framework": {
+    "record_id": "KYT-20260118-A",
+    "classification": "GOLD_SAMPLE–TIER_2_MEDIATED (pending Ve mechanism clarification)",
+    "confidence": "82% (reduced from 88% due to Ve contradiction)",
+    "phenomenology_mode": "mediated_phenomenology_with_ai_augmentation",
+
+    "publication_status": "PUBLISHABLE_WITH_MANDATORY_SUPPLEMENTS",
+    "mandatory_supplements": [
+      "1. Phenomenology Mode Classification Card (marking as MEDIATED_WITH_AUGMENTATION)",
+      "2. Ve Mechanism Resolution Form (observer must select: self_time_projection OR external_ai_narrative_trigger)",
+      "3. Access Structure Documentation (guided-tour constraints explicitly listed)",
+      "4. Knowledge Injection Timeline (post-visit Google search verified with timestamps)",
+      "5. Training Bucket Assignment (augmented_phenomenology_subclass with explicit schema tags)"
+    ],
+
+    "training_usability": "YES, but SEGREGATED",
+    "training_bucket": "augmented_phenomenology_with_augmentation_flags",
+    "training_instruction": "Treat as exemplar of how post-hoc knowledge scaffolding can restore temporal consciousness in institutionally-constrained sites",
+
+    "dataset_value": "ESSENTIAL for understanding AI's role in cultural interpretation; completes picture when paired with Ninenzaka (pure phenomenology with external distraction)"
+  },
+
+  "critical_feedback_integration_summary": {
+    "feedback_source": "High-level QC review (external)",
+    "feedback_quality": "Exceptionally penetrating; identified three system-level gaps",
+
+    "gap_1_ve_contradiction": {
+      "claude_stance": "Acknowledged but treated as secondary caveat",
+      "feedback_correction": "This is CRITICAL logic instability, not documentation caveat",
+      "action_taken": "Elevated to 'UNRESOLVED_CONTRADICTION' requiring formal observer decision"
+    },
+
+    "gap_2_llm_training_risk": {
+      "claude_stance": "Solvable through annotations",
+      "feedback_correction": "Annotations cannot prevent model misuse; requires training bucket segregation and schema tag propagation",
+      "action_taken": "Restructured from annotation-based to segregation-based protocol with mandatory tag propagation"
+    },
+
+    "gap_3_schema_incompleteness": {
+      "claude_stance": "Resilience measurement is 'accurate but untested'",
+      "feedback_correction": "Deeper issue: sensory_resilience and access_freedom are conflated; Katsura demonstrates institutional variables dominate physical variables",
+      "action_taken": "Split sensory_resilience into formal_aesthetic_resilience + phenomenological_access_freedom"
+    },
+
+    "system_level_recommendation": "Dataset should move from binary GOLD/NON-GOLD to layered classification with phenomenology_mode and access_structure as primary schema elements"
+  },
+
+  "implementation_priority": {
+    "immediate": [
+      "Resolve Katsura Ve mechanism contradiction (observer decision required)",
+      "Classify all 9 records by phenomenology_mode",
+      "Assign training buckets based on revised tier system"
+    ],
+    "short_term": [
+      "Implement formal_resilience / access_freedom split in schema",
+      "Generate phenomenology_mode classification cards for each record",
+      "Design training bucket segregation with schema tag propagation"
+    ],
+    "medium_term": [
+      "Publish Katsura as GOLD_SAMPLE–TIER_2_MEDIATED with all mandatory supplements",
+      "Publish dyadic analysis (Ninenzaka+Katsura) demonstrating Ve suppression mechanisms across access structures",
+      "Begin system-wide dataset stratification audit"
+    ]
+  }
+}
