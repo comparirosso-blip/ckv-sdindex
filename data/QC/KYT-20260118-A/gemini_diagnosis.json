@@ -1,0 +1,80 @@
+{
+  "diagnosis_record_id": "KYT-20260118-A_QC_PHENOMENOLOGY_EN_v1.0",
+  "analysis_generated_at": "2026-03-09T17:15:00.000Z",
+  "analyst": "Gemini_3_Flash_Spatial_Logic_Analysis",
+  "source_record": "KYT-20260118-A",
+  "analysis_framework": "SDIndex_v1.3_with_TCS",
+
+  "diagnosis_summary": {
+    "title": "Katsura Imperial Villa: The Architecture of Absolute Escapism and Sensory Control",
+    "severity_level": "medium_high_tension",
+    "failure_type": "cognitive_sensory_override",
+    "core_diagnosis": "The site represents the zenith of physical precision (Vt:9, Vg:9) but functions as a 'Sensory Prison' due to institutional constraints (Vr:6.0). The intervention of AI during the visit triggered an 'Expectation-Collapse-Reframe' cycle, where historical truth (escapism/control) overrode raw aesthetic pleasure, resulting in a moderate Ve (5.5)."
+  },
+
+  "cross_modal_analogy": {
+    "object_type": "Vacuum-Sealed, Remote-Operated Limited Edition Leica",
+    "rationale": "The space exhibits the same 'High-Spec/Zero-Autonomy' profile. It is a masterpiece of mechanical and material perfection (Vt/Vg), yet the user is strictly forbidden from touching or operating it freely. Navigation is controlled by an external program (the guide system), turning the 'instrument' of space into an 'object' of observation. It is a sacred tool rendered immobile.",
+    "vector_mapping": {
+      "Vt_Vg_9": "Uncompromising material quality and geometric rigor.",
+      "Vr_6.0": "Institutionalized rhythm; lack of somatic agency.",
+      "Ve_5.5": "The emotional ceiling created by the 'Controlled Discomfort' of being guided."
+    }
+  },
+
+  "failure_mechanisms": {
+    "mechanism_1": {
+      "id": "institutional_rhythm_suppression",
+      "name": "Institutional Rhythmic Suppression",
+      "description": "The mandatory guided tour creates a fixed temporal flow that contradicts the spatial complexity. While the geometry (Vg) invites deep, slow exploration, the social protocol forces a steady, linear movement, creating visceral friction for the observer.",
+      "logic": "Vg:9.0 (High Detail) vs Vr:6.0 (Restricted Movement) = Spatial Frustration."
+    },
+    "mechanism_2": {
+      "id": "cognitive_override_bias",
+      "name": "AI-Enhanced Cognitive Override",
+      "description": "The real-time research into historical context (the 'escapism' narrative) acted as a secondary filter. The observer's transition from 'exquisite loneliness' to 'historical helplessness' proves that knowledge can act as a sensory inhibitor, preventing full immersion (Ve) in the physical beauty.",
+      "logic": "AI_Augmentation -> Re-framing -> Ve_Stabilization at 5.5."
+    }
+  },
+
+  "intervention_brief_for_modern_showcase": {
+    "target": "Luxury Flagship / Exhibition Design",
+    "subject": "Mitigating 'The Controlled Discomfort' to Push SDIndex > 9.0",
+    "strategies": [
+      {
+        "action": "Restore Somatic Autonomy",
+        "method": "Replace linear tour paths with sensor-triggered narrative nodes. Allow the user's dwell time to dictate the activation of lighting and soundscapes.",
+        "expected_impact": "Vr: 6.0 -> 9.0"
+      },
+      {
+        "action": "Sensory Islanding",
+        "method": "Incorporate zones of 'Absolute Silence' or 'Acoustic Voids' within the high-density geometry to alleviate the pressure of over-engineering.",
+        "expected_impact": "Ve: 5.5 -> 8.5"
+      },
+      {
+        "action": "Interactive Luminescence",
+        "method": "Shift Vl from static perfection to responsive feedback. Subtle shifts in color temperature based on user proximity to decrease the 'cold perfection' barrier.",
+        "expected_impact": "Overall SDIndex Synergy"
+      }
+    ]
+  },
+
+  "graph_rag_metadata": {
+    "entities": [
+      { "type": "psychological_state", "name": "Exquisite_Loneliness" },
+      { "type": "design_philosophy", "name": "Talented_Escapism" },
+      { "type": "sensory_barrier", "name": "Institutional_Control" }
+    ],
+    "relationship_graph": {
+      "edges": [
+        { "source": "AI_collaboration", "target": "Ve", "relation": "reframes_perception", "strength": "strong" },
+        { "source": "Over_engineering", "target": "Somatic_agency", "relation": "inhibits", "strength": "critical" }
+      ]
+    }
+  },
+
+  "ai_summary_en": {
+    "abstract": "Katsura Imperial Villa is a 'Gold Sample' for power-based aesthetics. The mismatch between physical perfection and somatic restriction identifies this site as an 'Enforced Sanctuary.'",
+    "key_finding": "The Ve=5.5 score is a 'Neutral-Suppression' marker. It suggests that when design intent is too loud or too controlled, the human observer retreats into a state of cognitive analysis rather than emotional surrender."
+  }
+}
