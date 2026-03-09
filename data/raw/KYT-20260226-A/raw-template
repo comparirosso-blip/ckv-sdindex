@@ -1,0 +1,73 @@
+{
+  "record_type": "raw_field_note",
+  "record_id": "KYOTO-20260226-NINENZAKA-RAW-001",
+  "observer": "Sabrina Lin",
+  "location": "Ninenzaka / Sannenzaka vicinity, Kyoto",
+  "date": "2026-02-26",
+  "observation_mode": [
+    "walking",
+    "visual observation",
+    "casual photography"
+  ],
+
+  "context": {
+    "weather": "overcast",
+    "time_of_day": "afternoon",
+    "crowd_density": "high",
+    "visit_duration": "short walk"
+  },
+
+  "arrival_impression": "天空低飽和灰藍色，光線柔而平。去掉櫻花後，街道與建築輪廓反而更加清楚。",
+
+  "spatial_structure": {
+    "geometry": "狹窄坡道街道，兩側町家屋頂層層堆疊，遠處五重塔形成強烈垂直軸",
+    "design_intention": "歷史街區結構保留，街道動線自然導向寺院與觀光節點",
+    "perceived_effect": "垂直塔樓與水平屋頂形成穩定視覺結構"
+  },
+
+  "light_condition": {
+    "color_temperature": "cool diffuse daylight",
+    "distribution": "even cloud-filtered light across street",
+    "contrast": "low contrast shadows",
+    "layering": "mainly natural light without strong highlights",
+    "perceived_effect": "瓦屋與屋簷細節更加清晰"
+  },
+
+  "acoustic_condition": {
+    "materials": [
+      "stone pavement",
+      "wooden townhouses",
+      "tile roofs"
+    ],
+    "sound_behavior": "sound diffused by open street space",
+    "background_music": "mixed tourist voices and shop sounds",
+    "perceived_effect": "持續人聲與觀光活動形成流動聲場"
+  },
+
+  "material_atmosphere": {
+    "dominant_materials": [
+      "wood",
+      "tile",
+      "stone"
+    ],
+    "tactile_impression": "溫暖但帶有歷史粗糙感",
+    "comfort_level": "moderate"
+  },
+
+  "program_mix": {
+    "zone_1": "historic temple landmark (five-story pagoda)",
+    "zone_2": "traditional townhouse retail and food stalls",
+    "zone_3": "tourist circulation path",
+    "overall_coherence": "historical architecture integrated with tourism activity"
+  },
+
+  "body_response": {
+    "emotional_state": "觀察與思考狀態",
+    "behavior": "慢速行走與拍攝",
+    "movement_pattern": "隨人流前進但偶爾停下觀察"
+  },
+
+  "key_observation": "去除櫻花等季節裝飾後，歷史街區的空間結構與視覺秩序仍然成立。",
+
+  "reflection": "這裡的歷史建築與現代觀光流動並未互相取代，而是形成一種時間層疊的城市結構。"
+}
