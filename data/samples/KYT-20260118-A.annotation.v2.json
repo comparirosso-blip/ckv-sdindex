@@ -1,0 +1,68 @@
+{
+  "record_id": "KYT-20260118-A",
+  "phenomenology_mode": "mediated_phenomenology_with_ai_augmentation",
+
+  "mediation_profile": {
+    "access_mediation_type": "guided_tour_with_institutional_pace_control",
+    "mediation_severity": "high",
+    "constraint_effect": "observer_pacing_and_attention_allocation_were_constrained_by_tour_structure"
+  },
+
+  "augmentation_profile": {
+    "ai_collaboration_during_visit": true,
+    "knowledge_injection_source": "google_ai_search",
+    "knowledge_injection_timing": "post_visit_during_reflection",
+    "knowledge_injection_scope": "biographical_narrative_discovery",
+    "augmentation_effect": "external_ai_context materially altered exit_state and final meaning_structure"
+  },
+
+  "experience_phases": {
+    "entry_state": "Initial intuition: the site felt beautiful yet subtly oppressive, with a sensed undertone of boredom, discipline, and refined loneliness.",
+    "on_site_perception": "Observed extreme precision of garden design, architectural framing, and controlled scenic rhythm. Aesthetic richness was high, but the guided structure limited free pacing and self-directed dwelling.",
+    "constraint_structure": "Mandatory guided-tour pacing reduced phenomenological freedom despite high formal-aesthetic quality of the site.",
+    "knowledge_injection_event": "Post-visit Google AI inquiry introduced Prince Toshihito's political and biographical context, reframing the site as an aesthetic response to historical displacement and existential boredom.",
+    "exit_state": "Final interpretation shifted from vague intuition ('beautiful but likely boring to inhabit') to a historically scaffolded reading: a space of refined loneliness and meaning-making under political exclusion."
+  },
+
+  "ve_diagnostic": {
+    "ve_score": 5.5,
+    "ve_mechanism_status": "provisional",
+    "ve_initial_activation": "partially_on_site_constrained_self_projection",
+    "ve_primary_stabilizer": "post_visit_ai_biographical_scaffolding",
+    "ve_final_interpretive_closure": "hybrid",
+    "ve_mechanism_candidates": [
+      "self_time_projection",
+      "external_ai_narrative_trigger"
+    ],
+    "qc_note": "Current Ve mechanism remains unresolved; score may be valid, but its activation pathway must be clarified before use as stable reference."
+  },
+
+  "resilience_split": {
+    "formal_aesthetic_resilience": 9.0,
+    "phenomenological_access_freedom": 6.0,
+    "interpretation": "The site possesses exceptional intrinsic formal richness, but actual visitor freedom to regulate tempo and attention is structurally limited."
+  },
+
+  "training_use": {
+    "training_bucket": "augmented_phenomenology_subclass",
+    "usable_as_pure_sensory_ground_truth": false,
+    "usable_for_mediated_phenomenology_analysis": true,
+    "usable_for_ai_augmentation_analysis": true,
+    "llm_training_note": "Do not treat this record as equivalent to unmediated sensory observation. AI-assisted interpretation materially altered emotional closure and historical meaning assignment."
+  },
+
+  "observer_method_note": "This record captures both site perception and the moment when external AI knowledge reshaped interpretation. It should be classified as a mediated-and-augmented phenomenological sample, not as a pure sensory record.",
+
+  "publication_status": {
+    "gold_sample_candidate": true,
+    "gold_sample_tier": "tier_3_augmented_pending_ve_resolution",
+    "status_note": "Eligible as a high-value sample only if published with explicit phenomenology_mode, mediation profile, augmentation profile, and Ve diagnostic note."
+  }
+}
+{
+  "ve_trigger": "provisional_hybrid",
+  "sensory_resilience": "deprecated_use_resilience_split",
+  "vt_subtype": "architectural_heritage",
+  "vr_source": "guided_tour_managed",
+  "ve_trigger_legacy_note": "Original single-trigger field no longer sufficient for this sample; see ve_diagnostic."
+}
