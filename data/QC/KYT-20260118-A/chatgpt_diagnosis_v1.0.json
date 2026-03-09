@@ -1,0 +1,189 @@
+{
+  "audit_note_id": "QC-KYT-20260118-A-20260309-01",
+  "record_id": "KYT-20260118-A",
+  "site_name": {
+    "zh": "桂離宮",
+    "en": "Katsura Imperial Villa"
+  },
+  "audit_metadata": {
+    "audit_type": "qc_audit_note",
+    "audit_focus": [
+      "AI_augmentation_bias",
+      "Ve_annotation_consistency",
+      "sensory_vs_knowledge_weighting",
+      "outlier_detection",
+      "llm_training_readiness"
+    ],
+    "source_scope": [
+      "primary_json_record",
+      "sdindex_v11_manuscript"
+    ],
+    "audit_status": "open_critical_inconsistency"
+  },
+  "observed_record_state": {
+    "json_version_observation": {
+      "visit_mode": "guided_tour",
+      "ai_collaboration_during_visit": true,
+      "vs_vector": {
+        "Vt": 9.0,
+        "Vl": 8.5,
+        "Vr": 6.0,
+        "Vg": 9.0,
+        "Ve": 5.5
+      },
+      "Ve_trigger": "self_time_projection",
+      "sdindex_score": 7.6,
+      "sensory_resilience": "exceptional",
+      "research_finding": "AI即時的內容補充有可能改變人類感官",
+      "usable_for_llm_training": true,
+      "asset_class": "Gold_Sample"
+    },
+    "manuscript_version_observation": {
+      "vs_vector": {
+        "Vt": 9.0,
+        "Vl": 6.5,
+        "Vr": 8.0,
+        "Vg": 3.0,
+        "Ve": 9.0
+      },
+      "Ve_trigger": "external_ai_narrative_trigger",
+      "Ve_shift_claim": "projected_6.0_to_recorded_9.0",
+      "sdindex_score": 7.1,
+      "interpretation_note": "AI-mediated historical narration reframed temporal perception"
+    }
+  },
+  "critical_findings": [
+    {
+      "issue_id": "CF-01",
+      "severity": "critical",
+      "title": "Ve trigger contradiction",
+      "description": "同一筆樣本在原始 JSON 中標示 Ve_trigger 為 self_time_projection，但在論文草稿 Appendix B 中被定義為 External AI Narrative Trigger。",
+      "why_it_matters": "Ve 的啟動機制是理論核心欄位，若此欄位不一致，後續所有 Ve 解讀、比較分析與模型訓練都會失真。",
+      "recommended_resolution": "在資料主檔中明確選定單一主機制；若保留混合機制，需新增 secondary_trigger 或 trigger_stack 欄位，而非讓不同版本各自覆寫。"
+    },
+    {
+      "issue_id": "CF-02",
+      "severity": "critical",
+      "title": "Vector-level inconsistency across versions",
+      "description": "原始 JSON 與論文草稿對同一樣本的 Vs 向量出現大幅差異：Vl、Vr、Vg、Ve 皆不同，SDIndex 亦從 7.6 變成 7.1。",
+      "why_it_matters": "這不是文字修飾差異，而是數值層級版本衝突，會直接破壞資料可重現性與 benchmark 可信度。",
+      "recommended_resolution": "建立 canonical_record_version；論文、附錄、圖表一律由該主版本自動拉取，不可手工重寫。"
+    },
+    {
+      "issue_id": "CF-03",
+      "severity": "high",
+      "title": "AI augmentation reshaped exit-state interpretation",
+      "description": "emotion_trajectory 顯示觀察者在 turning_point 透過 Google AI 即時求證後，將原本的空間直覺改寫為一種『精緻孤獨／政治失意』的歷史敘事，並進一步重塑 exit_state。",
+      "why_it_matters": "這表示此筆資料不是純現場感知，而是 AI 介入後的混合型感知事件。",
+      "recommended_resolution": "新增 exit_state_source 與 augmentation_bias_flag 欄位，標記此樣本屬於 AI-reframed perception。"
+    },
+    {
+      "issue_id": "CF-04",
+      "severity": "medium",
+      "title": "Sensory resilience and Vr divergence is not noise but a governance signal",
+      "description": "雖然空間被標記為 exceptional sensory resilience，但 Vr 僅為 6。根據 field_notes，主因不是物理場域失敗，而是 guided_tour 與嚴格導覽制度壓制了自由停留與自發節奏。",
+      "why_it_matters": "此差異揭示制度控制可蓋過空間物理品質，屬於制度型異常，不應誤判為標註錯誤。",
+      "recommended_resolution": "新增 governance_interference 或 rhythm_constraint 欄位，將制度干擾顯式記錄。"
+    }
+  ],
+  "bias_analysis": {
+    "ai_augmentation_bias": {
+      "present": true,
+      "bias_type": "real_time_narrative_reframing",
+      "mechanism": [
+        "initial_low-knowledge_spatial_intuition",
+        "real-time_AI_historical_explanation",
+        "schema_activation",
+        "exit_state_reconstruction"
+      ],
+      "affected_fields": [
+        "emotion_trajectory.turning_point",
+        "emotion_trajectory.exit_state",
+        "research_finding",
+        "Ve_trigger",
+        "Ve_score"
+      ],
+      "estimated_effect_on_Ve": {
+        "status": "probable_but_unresolved_due_to_version_conflict",
+        "json_version_signal": "Ve remains low at 5.5 due to controlled/guided discomfort",
+        "manuscript_version_signal": "Ve elevated to 9.0 due to AI-triggered temporal deepening",
+        "qc_judgment": "Ve is currently annotation-unstable, not yet safe as a settled gold-standard label"
+      }
+    }
+  },
+  "perception_knowledge_weighting": {
+    "assessment": "hybrid_sample",
+    "onsite_direct_sensory_weight": 0.58,
+    "interpretive_inference_weight": 0.17,
+    "real_time_ai_knowledge_injection_weight": 0.25,
+    "rationale": "此樣本的核心歷史厚度並非完全由現場物理線索直接得出，而是由 AI 即時敘事補充後形成穩定解讀，因此不能視為純感官樣本。",
+    "training_risk": "若未加標籤直接進 LLM 訓練，模型可能把 AI 補充得來的歷史投射，誤學成觀察者到場就會自然感知到的原生訊號。"
+  },
+  "outlier_detection": {
+    "outlier_flag": true,
+    "outlier_type": "institutional_override_of_spatial_rhythm",
+    "pattern": {
+      "sensory_resilience": "exceptional",
+      "Vr": 6.0,
+      "visit_mode": "guided_tour"
+    },
+    "interpretation": "此樣本呈現高物理韌性、低自由律動的組合，異常來源更接近制度編排，而非空間品質不足。",
+    "analytical_value": "高，因其可作為『人為制度干擾 > 空間物理品質』的代表性案例。"
+  },
+  "llm_training_audit": {
+    "current_label_in_record": true,
+    "qc_override_recommendation": "conditional_use_only",
+    "recommended_training_tags": [
+      "hybrid_perception",
+      "ai_augmented",
+      "historical_reframing_present",
+      "governance_constraint_present",
+      "annotation_conflict_unresolved"
+    ],
+    "do_not_use_as": [
+      "pure_sensory_ground_truth",
+      "clean_Ve_benchmark",
+      "single-source_gold_label"
+    ],
+    "safe_use_cases": [
+      "AI-human co-perception case study",
+      "Ve activation mechanism comparison",
+      "annotation conflict methodology example",
+      "governance-vs-rhythm anomaly analysis"
+    ]
+  },
+  "required_actions": [
+    {
+      "priority": 1,
+      "action": "Resolve canonical Ve trigger",
+      "detail": "在 self_time_projection 與 external_ai_narrative_trigger 之間做出正式決策，或改為主次雙機制模型。"
+    },
+    {
+      "priority": 2,
+      "action": "Freeze a canonical Vs vector",
+      "detail": "確認 KYT-20260118-A 的唯一正式向量與 SDIndex，並同步修正論文與資料檔。"
+    },
+    {
+      "priority": 3,
+      "action": "Add augmentation metadata",
+      "detail": "新增 augmentation_bias_flag、knowledge_injection_mode、exit_state_source。"
+    },
+    {
+      "priority": 4,
+      "action": "Add governance interference metadata",
+      "detail": "新增 guided_constraint_level 或 governance_interference 字段，用以解釋 Vr 壓低原因。"
+    },
+    {
+      "priority": 5,
+      "action": "Downgrade training confidence until resolved",
+      "detail": "在衝突未修復前，將此樣本由 clean_gold_sample 暫降為 contested_gold_sample 或 gold_sample_under_review。"
+    }
+  ],
+  "proposed_status_update": {
+    "current_status_in_record": "Gold_Sample",
+    "recommended_status": "Gold_Sample_Under_Review",
+    "release_readiness": "not_ready_for_benchmark_release",
+    "reason": "核心理論欄位與數值向量存在跨版本衝突。"
+  },
+  "one_sentence_summary": "KYT-20260118-A 是一筆高價值但高風險的混合型樣本：它成功捕捉了 AI 即時敘事如何重塑歷史感知，但目前 Ve 機制與向量標註尚未穩定，不能直接作為純感官黃金標準。"
+}
