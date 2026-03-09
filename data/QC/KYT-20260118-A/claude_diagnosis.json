@@ -1,0 +1,110 @@
+{
+  "record_id": "KYT-20260118-A",
+  "schema_version": "1.3",
+  "generated_at": "2026-03-09T08:29:18.035Z",
+  "site": {
+    "name_zh": "桂離宮",
+    "name_local": "かつらりきゅう",
+    "name_en": "Katsura Imperial Villa",
+    "city": "Kyoto",
+    "region": "KYT",
+    "country": "JP",
+    "site_type": "zen_temple_garden"
+  },
+  "observation": {
+    "date": "2026-01-18",
+    "time_of_day": "afternoon",
+    "season": "winter",
+    "weather": "clear",
+    "crowd_density": "very_low",
+    "visit_mode": "guided_tour",
+    "companion": "solo",
+    "observer_flags": {
+      "sensory_saturation_effect": false,
+      "preloaded_knowledge_active": false,
+      "ai_collaboration_during_visit": true,
+      "repeat_visit": false
+    }
+  },
+  "vs_vector": {
+    "Vt": 9,
+    "Vl": 8.5,
+    "Vr": 6,
+    "Vg": 9,
+    "Ve": 5.5
+  },
+  "vs_subtypes": {
+    "Vt_subtype": "architectural_heritage",
+    "Vl_source": "natural_diffused",
+    "Vr_source": "architectural_design",
+    "Vg_subtype": "open_framed",
+    "Ve_trigger": "self_time_projection"
+  },
+  "sdindex_computation": {
+    "raw_sum": 38,
+    "max_possible": 50,
+    "sdindex_score": 7.6,
+    "formula": "sum(Vt+Vl+Vr+Vg+Ve) / 50 * 10"
+  },
+  "sensory_resilience": {
+    "level": "exceptional",
+    "note": "Observer assessment of the space's resistance to crowding and noise, evaluated independently of current crowd density"
+  },
+  "field_notes": {
+    "Vt": "Unlike the temples in central Kyoto or the Kyoto Imperial Palace, Katsura Imperial Villa is situated on the outskirts of the city. The gradual journey to reach it by transport somewhat dilutes the initial cultural density upon arrival. However, the layered history of imperial lineage, the tea ceremony tradition, the political shifts of the Edo period, and the personal story of the villa's creator collectively restore — and even amplify — its cultural weight.",
+    "Vl": "The visit took place on a clear day. The entire site was conceived as a meticulous aesthetic environment, and one can sense that its perfectionist creator controlled the distribution of light and shadow to a degree that borders on an intolerance for any imperfection.",
+    "Vr": "The spatial design here is marked by extreme restraint. The garden's designer seems to have intended every element to communicate a singular message: each compositional choice is meant to feel definitive and complete. The addition of a docent and a strictly regulated tour flow keeps visitor movement very low, resulting in a slow overall rhythm. Yet this slowness comes at a cost — visitors cannot linger freely before such precisely composed forms. This mode of rhythm — slow but involuntary — is difficult to score highly.",
+    "Vg": "Without question, this dimension earns the highest marks.",
+    "Ve": "Judged purely on aesthetic geometry, the spatial structure here deserves an excellent score. However, this is a beauty that can only be accessed through guided mediation. As a result, the visitor cannot absorb the geometric harmony naturally or spontaneously. Once conscious deliberation enters the equation, the sense of over-design and over-management produces a subtle but real feeling of being controlled. Immersion cannot take hold under these conditions, and the score is adjusted downward accordingly."
+  },
+  "emotion_trajectory": {
+    "entry_state": "I had little prior knowledge of this place before visiting, and I had not brought earphones for the audio guide. As I walked through, my dominant impression was: whoever built this exquisitely Japanese space must have been profoundly bored living here.",
+    "turning_point": "I consulted Google's AI mode on a whim, and it confirmed exactly what I had intuited: this is a space shaped by refined, solitary boredom. The obsessive precision of Katsura's design — the exact placement of every stone, the pruned form of every tree, the precise window angle calculated for moon-viewing, the choreography of reflections on the water — was, in effect, proof of how the creator spent his time. Because Toyotomi Hideyoshi had not killed him, but had instead given him vast resources with the implicit instruction to channel his energy into the arts, this young prince had no choice but to pour his vitality into these minutiae. Without that outlet, his life might well have ended.",
+    "exit_state": "Walking through the villa, the quiet sense of resignation I felt was, I now believe, the emotional keynote of that prince's life four centuries ago. The AI noted that this may in fact be the most historically accurate response one can have to this place — though it acknowledged it might also simply be following the direction of my own thinking.",
+    "trajectory_type": "expectation_collapse_reframe",
+    "key_insight": "A profoundly bored man, driven by extraordinary talent and the raw will to survive, built a space as an act of escape from a reality he could not otherwise flee."
+  },
+  "qc_diagnosis": {
+    "generated_by": "architectural_phenomenology_analysis",
+    "analysis_date": "2026-03-09",
+    "findings": {
+      "vg_vs_vr_tension": {
+        "label": "Geometric Perfection as Rhythmic Suppressor",
+        "summary": "Katsura's Vg score of 9.0 reflects near-mathematical spatial precision. However, rhythm — the dimension Vr measures — depends on the observer's freedom to modulate their own pace of engagement. The guided tour format acts as a forced metronome, transferring rhythmic control from the visitor's body to the institutional schedule. The result is a space that is slow but not organically slow, still but not self-generated stillness. The observer's field note — 'slow, yet unable to linger' — precisely captures this phenomenological collapse of rhythm.",
+        "mechanism": "Vg encodes the designer's total spatial control; Vr encodes the observer's embodied temporal freedom. When the former is maximized through both design and management protocol, it structurally suppresses the latter."
+      },
+      "vt_vs_ve_immersion_gap": {
+        "label": "Dual-Layer Immersion Barrier",
+        "summary": "Despite a Vt of 9.0, Ve falls to 5.5 due to two compounding barriers. First, the docent's verbal interpretation preempts the pre-conscious perceptual window — visitors confirm concepts rather than discover sensations. Second, the over-managed environment triggers psychological reactance: the perception of constrained freedom causes observers to defensively maintain self-awareness, which is the structural opposite of immersion. The high cultural energy encoded in Vt is intercepted before it can convert into temporal dissolution.",
+        "mechanism": "Immersion requires temporary dissolution of the subject-space boundary. Reactance reinforces that boundary. Docent-led interpretation displaces embodied sensing with cognitive verification."
+      },
+      "survival_compulsion_design": {
+        "label": "Obsessive Precision as Encoded Existential Pressure",
+        "summary": "The key_insight reframes the entire Vs vector: the designer was not an artist optimizing for visitor experience, but a politically neutralized prince converting surplus vitality into spatial control. Vg's 9.0 reflects not design excellence per se, but the exhaustive elimination of all uncontrolled variables — because uncontrolled variables were existentially intolerable to the creator. This same compulsive closure explains Ve's suppression: a space built to contain one man's anxiety cannot easily release another person's sense of time. The emotional residue of that original constraint persists in the spatial grammar itself, and can be somatically detected even by visitors with no prior historical knowledge — as confirmed by the observer's intuition at entry.",
+        "mechanism": "Spatial affect encodes the psychological state of the designer at time of creation. The obsessive control grammar of Katsura produces a field of contained tension that resists the relaxation necessary for immersion."
+      }
+    },
+    "vector_summary": {
+      "Vt": {"score": 9.0, "flag": "strong", "note": "Historical density exceptional; transmission partially constrained by guided format"},
+      "Vl": {"score": 8.5, "flag": "strong", "note": "Light design reflects the creator's perfectionist precision"},
+      "Vr": {"score": 6.0, "flag": "warning", "note": "Rhythm forcibly paced by institutional tour protocol; observer agency absent"},
+      "Vg": {"score": 9.0, "flag": "strong", "note": "Rare geometric completeness; originates in compulsive survival-driven design logic"},
+      "Ve": {"score": 5.5, "flag": "warning", "note": "Dual barrier: docent interpretation preempts sensing; reactance blocks immersion"}
+    },
+    "overall_assessment": "SDIndex 7.6 represents a score of high quality with structural regret. The villa's limitations are not architectural but institutional: a visit management system fundamentally misaligned with the spatial philosophy it governs. The ideal condition of autumn foliage (momiji season) is noted as potentially the only naturally occurring variable capable of introducing non-designed contingency into an otherwise exhaustively controlled geometric system — and contingency is precisely the element Vr and Ve most require.",
+    "research_finding_confirmed": "The observer's intuitive emotional reading — boredom, resignation, containment — achieved without prior historical knowledge, supports the hypothesis that spatial affect encoding is somatically legible. AI-assisted real-time contextual augmentation during the visit demonstrably reshaped the emotional trajectory, validating the field's research finding: AI-mediated content supplementation can alter human sensory and interpretive response in situ."
+  },
+  "counterpoint": {
+    "paired_record": null
+  },
+  "ideal_condition": "autumn_foliage_season",
+  "research_finding": "AI real-time content augmentation during site visits can measurably alter human sensory and interpretive experience",
+  "asset_class": "Gold_Sample",
+  "usable_for_llm_training": true,
+  "ip_status": {
+    "author": "Sabrina",
+    "created_at": "2026-03-09T08:29:18.035Z",
+    "license": "CC-BY-4.0",
+    "locked": true
+  }
+}
