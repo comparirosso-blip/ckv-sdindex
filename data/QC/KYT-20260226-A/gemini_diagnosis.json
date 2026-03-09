@@ -1,0 +1,63 @@
+{
+  "diagnosis_record_id": "KYT-20260226-A_QC_CROSSMODAL_EN_v1.0",
+  "analysis_generated_at": "2026-03-09T16:15:00.000Z",
+  "analyst": "Gemini_3_Flash_Spatial_Consultant",
+  "source_record": "KYT-20260226-A",
+  "analysis_framework": "SDIndex_v1.3_with_TCS",
+
+  "diagnosis_summary": {
+    "title": "Ninenzaka: High-Fidelity Substance with Temporal Surface Tension",
+    "severity_level": "low_risk_high_noise",
+    "failure_type": "cultural_saturation_entropy",
+    "core_diagnosis": "The site exhibits exceptional physical density (Vt:8, Vg:8) but suffers from a significant 'temporal short-circuit' (Ve:2.5). The sheer volume of 'tourist-time' narratives creates a sensory barrier that prevents the observer from accessing the 'heritage-time' encoded in the architecture."
+  },
+
+  "cross_modal_analogy": {
+    "object_type": "Antique Cello in a Busy Marketplace",
+    "rationale": "The space mirrors an 18th-century cello (High Vt and Vg) with masterful craftsmanship and deep resonance. However, because it is being played in a noisy, crowded market (High crowd_density, High external_narrative_human), the profound historical soul of the instrument is drowned out by ambient chatter. You see the beauty, but you cannot hear the depth.",
+    "vector_mapping": {
+      "Vt_Vg_8": "Exquisite craftsmanship and structural integrity of the instrument.",
+      "Vr_7": "The complex rhythmic patterns of the street's stepped topography.",
+      "Ve_2.5": "The inability to achieve deep listening/immersion due to social noise."
+    }
+  },
+
+  "failure_mechanisms": {
+    "mechanism_1": {
+      "id": "narrative_crowding_interference",
+      "name": "Narrative Crowding & Signal Interference",
+      "description": "The 'external_narrative_human' trigger (tourists in kimonos, selfie culture) acts as high-frequency sensory noise. This noise competes with the 'architectural_heritage' signal, leading to a flattening of temporal depth (Ve).",
+      "impact": "The experience is shifted from 'historical contemplation' to 'theatrical consumption'."
+    },
+    "mechanism_2": {
+      "id": "flat_light_anesthesia",
+      "name": "Diffused Light Anesthesia",
+      "description": "Under 'natural_diffused' (cloudy) weather, the lack of directional shadow fails to isolate high-Vt textures. Without shadow-defined boundaries, the eye is easily distracted by the movement of crowds rather than the permanence of stone and wood.",
+      "logic": "Vl:6.0 is insufficient to provide the 'G-Factor' necessary to counteract high crowd entropy."
+    }
+  },
+
+  "urban_planning_brief_en": {
+    "target": "Kyoto Urban Planning Department",
+    "subject": "Sensory Intervention to Restore Temporal Depth (Ve) in Ninenzaka",
+    "content": "To counteract the degradation of temporal perception (Ve) caused by high tourist occupancy, we recommend a 'Light-Shadow Decoupling' strategy. By introducing directional, lower-intensity lighting during late afternoons and strategically dimming standard artificial sources, the district can restore the 'Tanizaki G-Factor.' Deepening the shadow pockets in recessed facades will create visual 'sanctuaries' that shield the observer's eyes from the clutter of moving crowds, effectively recalibrating the sensory focus toward architectural permanence and increasing the Ve score from 2.5 back to its heritage potential."
+  },
+
+  "graph_rag_metadata": {
+    "entities": [
+      { "type": "spatial_anchor", "name": "Yasaka_Pagoda_Visual_Alignment" },
+      { "type": "sensory_noise", "name": "Tourist_Narrative_Saturation" }
+    ],
+    "relationship_graph": {
+      "edges": [
+        { "source": "crowd_density:high", "target": "Ve", "relation": "compresses", "strength": "critical" },
+        { "source": "Vt:8", "target": "Ve", "relation": "potential_source", "strength": "inhibited_by_noise" }
+      ]
+    }
+  },
+
+  "ai_summary_en": {
+    "abstract": "Ninenzaka presents a rare case where the physical SDIndex is nearly perfect, but the experiential SDIndex is hampered by social entropy. The mismatch between Vt (8.0) and Ve (2.5) identifies this site as a 'High-Value/Low-Immersion' node.",
+    "recommendation": "Use this as a 'Gold Sample' for High Resilience. Despite the low Ve, the medium resilience indicates that the physical structure (Vg/Vt) is strong enough to prevent total sensory collapse, unlike commercial anchors like LaLaport."
+  }
+}
