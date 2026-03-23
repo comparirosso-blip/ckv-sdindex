@@ -1,0 +1,62 @@
+.
+├── CHANGELOG.md
+├── README (1).md
+├── README.md
+├── SCORING_GUIDE.md
+├── TAIPEI_PILOT_PLAN.md
+├── VALIDATION_PROTOCOL.md
+├── data
+│   ├── QC
+│   │   ├── KYT-20260118-A
+│   │   │   ├── chatgpt_diagnosis_v1.0.json
+│   │   │   ├── chatgpt_diagnosis_v2.0.json
+│   │   │   ├── claude_diagnosis.json
+│   │   │   └── gemini_diagnosis.json
+│   │   ├── KYT-20260226-A
+│   │   │   ├── chatgpt_diagnosis.json
+│   │   │   ├── claude_giagnosis.json
+│   │   │   └── gemini_diagnosis.json
+│   │   └── TPE-20260308-A
+│   │       ├── ChatGPT_diagnosis.json
+│   │       ├── claude_diagnosis.json
+│   │       └── gemini_diagnosis.json
+│   ├── analysis
+│   │   ├── KYT-20260118-A
+│   │   │   ├── EXECUTIVE_SUMMARY_RESPONSE_TO_FEEDBACK.json
+│   │   │   ├── REVISED_KATSURA_QC_WITH_FRAMEWORK_CORRECTION.json
+│   │   │   ├── claude_goldsample_verification.json
+│   │   │   └── dyadic_analysis_ninenzaka_katsura.json
+│   │   ├── KYT-20260226-A
+│   │   │   ├── Dyadic_analysis_ninenzaka_katsura.json
+│   │   │   └── claude_goldsample_verification.json
+│   │   └── TPE-20260308-A
+│   │       ├── ChatGPT_cross_domain.json
+│   │       ├── Claude_cross_domain.json
+│   │       ├── Gemini_cross_domain.json
+│   │       └── RAG_intergration_guide.md
+│   ├── raw
+│   │   ├── KYT-20260226-A
+│   │   │   ├── raw-template
+│   │   │   └── text
+│   │   └── TPE-20260308-A
+│   │       ├── raw_template
+│   │       └── text
+│   └── samples
+│       ├── KYT-20260118-A.annotation.v2.json
+│       ├── KYT-20260118-A.json
+│       ├── KYT-20260226-A.json
+│       └── TPE-20260308-A.json
+├── repo_structure.txt
+├── research_log
+│   ├── TPE-20260308-A_milestone.json
+│   └── schema_thinking.json
+├── schema
+│   └── CKV_schema_v1.3.json
+└── tools
+    ├── CKV_QuickForm_v1_3.html
+    └── protocol
+        ├── Sabrina_spatial_field_protocol_v1.0.md
+        ├── TPE-202603_sampling_plan_v1.json
+        └── sabrina_spatial_field_protocol_v1.json
+
+18 directories, 42 files
